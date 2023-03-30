@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rudrashop/pages/Home.dart';
 import 'package:rudrashop/pages/dashboard.dart';
 import 'package:rudrashop/pages/signup.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => DashboardModel()),
+        ChangeNotifierProvider(create: (context) => HomeModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
