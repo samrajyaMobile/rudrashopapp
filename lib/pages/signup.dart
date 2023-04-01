@@ -35,7 +35,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
                       label: const Text("Name"),
-                      labelStyle: AppFonts.textFieldLabel,
+                      labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -53,7 +53,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
                       label: const Text("Surname"),
-                      labelStyle: AppFonts.textFieldLabel,
+                      labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -71,7 +71,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
                       label: const Text("E-mail"),
-                      labelStyle: AppFonts.textFieldLabel,
+                      labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -89,7 +89,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
                       label: const Text("Password"),
-                      labelStyle: AppFonts.textFieldLabel,
+                      labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -107,7 +107,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
                       label: const Text("Confirm Password"),
-                      labelStyle: AppFonts.textFieldLabel,
+                      labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -125,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
                       label: const Text("Full Address"),
-                      labelStyle: AppFonts.textFieldLabel,
+                      labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -143,7 +143,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
                       label: const Text("City"),
-                      labelStyle: AppFonts.textFieldLabel,
+                      labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
@@ -161,7 +161,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
                       label: const Text("Pincode"),
-                      labelStyle: AppFonts.textFieldLabel,
+                      labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),

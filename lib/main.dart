@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rudrashop/pages/Home.dart';
+import 'package:rudrashop/pages/home.dart';
 import 'package:rudrashop/pages/dashboard.dart';
+import 'package:rudrashop/pages/login_screen.dart';
 import 'package:rudrashop/pages/signup.dart';
+import 'package:rudrashop/pages/sun_categoty.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => DashboardModel()),
         ChangeNotifierProvider(create: (context) => HomeModel()),
+        ChangeNotifierProvider(create: (context) => LoginModel()),
+        ChangeNotifierProvider(create: (context) => SubCategoryModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
