@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:rudrashop/http/model/main_category_response.dart';
 import 'package:rudrashop/http/model/products_response.dart';
 import 'package:rudrashop/http/model/slider_data_response.dart';
-import 'package:rudrashop/pages/sun_categoty.dart';
+import 'package:rudrashop/pages/sub_categoty.dart';
 import 'package:rudrashop/utils/app_constant.dart';
 import 'package:rudrashop/utils/app_dialog.dart';
 import 'package:http/http.dart' as http;
@@ -92,8 +92,10 @@ class _HomeState extends State<Home> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => SubCategoryScreen(
-                                              categoryName: category?.categoryName ?? "",
-                                              categoryId: category?.categorySid ?? "",
+                                              categoryName:
+                                                  category?.categoryName ?? "",
+                                              categoryId:
+                                                  category?.categorySid ?? "",
                                             )));
                               },
                               child: Padding(
@@ -125,102 +127,6 @@ class _HomeState extends State<Home> {
               const SizedBox(
                 height: 10,
               ),
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio:
-                      MediaQuery.of(context).size.aspectRatio * 3 / 2,
-                ),
-                itemCount: home.productsList?.length,
-                itemBuilder: (context, int index) {
-                  ProductData? products = home.productsList?[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: AppColor.mainColor)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Stack(
-                              children: [
-                                Image.network(
-                                  "https://drive.google.com/uc?id=${products?.productImage ?? ""}",
-                                  scale: 2.5,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: AppColor.mainColor,
-                                          borderRadius:
-                                              BorderRadius.circular(25)),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          "-${products?.discount.toString() ?? ""}%",
-                                          style: AppFonts.semiBoldWhite,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              products?.categoryName ?? "",
-                              style: AppFonts.regularBlack,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              products?.productName ?? "",
-                              style: AppFonts.semiBoldBlack,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "₹ ${products?.productPrice.toString() ?? ""}",
-                                  style: AppFonts.mainPrice,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "₹ ${products?.ourPrice.toString() ?? ""}",
-                                  style: AppFonts.mediumMainColor,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              )
             ],
           ),
         );
@@ -259,12 +165,7 @@ class HomeModel extends ChangeNotifier {
         context: context,
         builder: (context) => const LoadingDialog(),
         barrierDismissible: false);
-
-    print("Nikesh1111");
     var response = await http.get(Uri.parse(AppConstant.GET_CATEGORIES));
-
-    print("Nikesh");
-    print(response.body);
 
     if (response.statusCode == 200) {
       Navigator.pop(context);

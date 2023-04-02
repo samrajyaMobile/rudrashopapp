@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:rudrashop/http/model/login_response.dart';
 import 'package:rudrashop/pages/signup.dart';
 import 'package:rudrashop/utils/app_colors.dart';
-import 'package:rudrashop/utils/app_constant.dart';
 import 'package:rudrashop/utils/app_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -94,16 +93,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 30,
                   ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
                     child: ElevatedButton(
                         style: ButtonStyle(
                           shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(100))),
                           backgroundColor:
-                              MaterialStateProperty.all(AppColor.mainColor),
+                          MaterialStateProperty.all(AppColor.mainColor),
                           overlayColor:
-                              MaterialStateProperty.all(Colors.white10),
+                          MaterialStateProperty.all(Colors.white10),
                         ),
                         onPressed: () {
                           login.login();
@@ -131,47 +133,24 @@ class LoginModel extends ChangeNotifier {
   final TextEditingController _password = TextEditingController();
 
   login() async {
+
+
     String u_email = _email.text.toLowerCase().trim();
-    String u_password = _email.text.trim();
+    String u_password = _password.text.trim();
 
-    Map<dynamic, String> loginBody = {
-      "u_email": u_email,
-      "u_password": u_password,
-    };
+    var response = await http.get(Uri.parse(
+        "https://script.google.com/macros/s/AKfycby1cI7i25CsVF35-lj2K0-wQiKc5K9JHJ9S5oLdSdawa_XsnXeDxJYILP8DIkQgjtwO/exec?action=login&u_email=nik.sagathiya6464@gmail.com&u_password=nikesh@19773*"));
 
-    Map<String, String> headers = {'Content-Type': 'application/json'};
-
-    String stringBody = jsonEncode(loginBody);
-
-    var response = await http.post(Uri.parse(AppConstant.POST_LOGIN),
-        headers: headers, body: stringBody);
-
-    print(AppConstant.POST_LOGIN);
-
-    String? redirectUrl = response.headers['location'];
-    print('Redirect URL: $redirectUrl');
-
-    print(response.body);
-
-    var response2 =
-        await http.post(Uri.parse(redirectUrl ?? ""), body: stringBody);
-
-    print(response2.body);
-
-    if (response2.statusCode == 200) {
-      var jsonData = json.decode(response2.body);
-
+    if (response.statusCode == 200) {
+      var jsonData = json.decode(response.body);
       if (jsonData["status"] ?? false) {
         var data = LoginResponse.fromJson(jsonData);
+        if(data.status?? false){
 
-        if (data.status ?? false) {
-          print("Nikesh");
-        } else {
-          print("Nikesh1");
         }
-      } else {
-        print("Nik 2+3");
       }
+    } else {
+
     }
   }
 }
