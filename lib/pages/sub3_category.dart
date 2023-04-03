@@ -42,85 +42,96 @@ class _Sub3CategoryState extends State<Sub3Category> {
             backgroundColor: AppColor.mainColor,
             title: Text(widget.subCategoryName ?? ""),
           ),
-          body: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Select type of ${widget.subCategoryName} : ",
-                    style: AppFonts.semiBoldBlack,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 3 / 1),
-                    shrinkWrap: true,
-                    itemCount: sub3Category.sub3CategoryList.length,
-                    itemBuilder: (context, int index) {
-                      Sub3CategoryData subCate = sub3Category.sub3CategoryList[index];
+          body: WillPopScope(
 
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => MainProductsList(
-                                sub3CategoryId: subCate.sub3CategoryId,
-                                sub3CategoryName: subCate.sub3CategoryName,
+            onWillPop: () async{
+              sub3Category.makeListNull();
+              return true;
+            },
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "Select type of ${widget.subCategoryName} : ",
+                      style: AppFonts.semiBoldBlack,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 2 / 1),
+                      shrinkWrap: true,
+                      itemCount: sub3Category.sub3CategoryList.length,
+                      itemBuilder: (context, int index) {
+                        Sub3CategoryData subCate = sub3Category.sub3CategoryList[index];
+
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainProductsList(
+                                  sub3CategoryId: subCate.sub3CategoryId,
+                                  sub3CategoryName: subCate.sub3CategoryName,
+                                ),
                               ),
-                            ),
-                          );
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black7),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.network(
-                                    "https://drive.google.com/uc?id=${subCate.sub3CategoryImage ?? ""}",
-                                    scale: 15,
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Expanded(
-                                    child: Center(
-                                      child: Text(
-                                        subCate.sub3CategoryName ?? "",
-                                        style: AppFonts.textFieldLabelBlack,
-                                        textAlign: TextAlign.center,
-                                        maxLines: 2,
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black7),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 50,
+                                      width: 50,
+                                      child: Image.network(
+                                        "https://drive.google.com/uc?id=${subCate.sub3CategoryImage ?? ""}",
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  const Icon(
-                                    Icons.arrow_forward_ios,
-                                    size: 12,
-                                  )
-                                ],
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: Center(
+                                        child: Text(
+                                          subCate.sub3CategoryName ?? "",
+                                          style: AppFonts.textFieldLabelBlack,
+                                          textAlign: TextAlign.center,
+                                          maxLines: 2,
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    const Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 12,
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    },
-                  )
-                ],
+                        );
+                      },
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -135,7 +146,6 @@ class Sub3CategoryModel extends ChangeNotifier {
   List<Sub3CategoryData> sub3CategoryList = [];
 
   getSub3Category(String subCategoryId, BuildContext context) async {
-    print(subCategoryId);
     showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
     var url = "${AppConstant.GET_SUB3_CATEGORIES}${QueryParamsConstant.SUB_CATEGORY_ID}=$subCategoryId";
     var response = await http.get(Uri.parse(url));
@@ -149,17 +159,19 @@ class Sub3CategoryModel extends ChangeNotifier {
           sub3CategoryList = data.sub3Category ?? [];
           notifyListeners();
         } else {
-          sub3CategoryList = [];
-          notifyListeners();
+          makeListNull();
         }
       } else {
-        sub3CategoryList = [];
-        notifyListeners();
+        makeListNull();
       }
     } else {
       Navigator.pop(context);
-      sub3CategoryList = [];
-      notifyListeners();
+      makeListNull();
     }
+  }
+
+  makeListNull(){
+    sub3CategoryList = [];
+    notifyListeners();
   }
 }

@@ -61,11 +61,11 @@ class MainProductData {
   String? categoryName;
   String? pId;
   String? productName;
-  int? productMrp;
-  int? productSp;
-  int? pGst;
-  int? discount;
-  int? productMoq;
+  String? productMrp;
+  String? productSp;
+  String? pGst;
+  String? discount;
+  String? productMoq;
   String? productsDescr;
   String? image1;
   String? image2;

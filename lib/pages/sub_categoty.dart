@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable, use_build_context_synchronously
 
 import 'dart:convert';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:rudrashop/http/model/sub_category_response.dart';
@@ -35,62 +36,72 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
     return SafeArea(
       child: Consumer<SubCategoryModel>(builder: (context, subCategory, _) {
         return Scaffold(
+          backgroundColor: AppColor.white,
           appBar: AppBar(
             backgroundColor: AppColor.mainColor,
             title: Text(widget.categoryName ?? ""),
           ),
-          body: Column(
-            children: [
-              Expanded(
-                child: GridView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-                  shrinkWrap: true,
-                  itemCount: subCategory.subCategoryList.length,
-                  itemBuilder: (context, int index) {
-                    SubCategoryData subCate = subCategory.subCategoryList[index];
+          body: WillPopScope(
+            onWillPop: () async {
+              subCategory.makeListNull();
+              return true;
+            },
+            child: Column(
+              children: [
+                Expanded(
+                  child: GridView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                    shrinkWrap: true,
+                    itemCount: subCategory.subCategoryList.length,
+                    itemBuilder: (context, int index) {
+                      SubCategoryData subCate = subCategory.subCategoryList[index];
 
-                    return InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Sub3Category(subCategoryName: subCate.subCategoryName, subCategoryId: subCate.subCategoryId)));
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black7),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Image.network(
-                                    "https://drive.google.com/uc?id=${subCate.subCategoryImage ?? ""}",
-                                    scale: 6,
+                      return InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Sub3Category(subCategoryName: subCate.subCategoryName, subCategoryId: subCate.subCategoryId)));
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black7),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: SizedBox(
+                                      height: 120,
+                                      width: 120,
+                                      child: Image.network(
+                                        "https://drive.google.com/uc?id=${subCate.subCategoryImage ?? ""}",
+                                      ),
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Center(
-                                    child: Text(
-                                  subCate.subCategoryName ?? "",
-                                  style: AppFonts.textFieldLabelBlack,
-                                  textAlign: TextAlign.center,
-                                ))
-                              ],
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Center(
+                                      child: Text(
+                                    subCate.subCategoryName ?? "",
+                                    style: AppFonts.textFieldLabelBlack,
+                                    textAlign: TextAlign.center,
+                                  ))
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    );
-                  },
-                ),
-              )
-            ],
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
           ),
         );
       }),
@@ -117,17 +128,19 @@ class SubCategoryModel extends ChangeNotifier {
           subCategoryList = data.subCategory ?? [];
           notifyListeners();
         } else {
-          subCategoryList = [];
-          notifyListeners();
+          makeListNull();
         }
       } else {
-        subCategoryList = [];
-        notifyListeners();
+        makeListNull();
       }
     } else {
       Navigator.pop(context);
-      subCategoryList = [];
-      notifyListeners();
+      makeListNull();
     }
+  }
+
+  makeListNull() {
+    subCategoryList = [];
+    notifyListeners();
   }
 }

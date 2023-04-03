@@ -15,7 +15,7 @@ class AppConstant {
   static const String GET_SUB3_CATEGORIES = "https://script.google.com/macros/s/AKfycbybyxwUihPayqekC_bcqTtmAKQb4vZCXjCDkNR-GS2_rsrgja9bIgY5f8cZq_LDPmhf/exec?";
 
   /// Main Products
-  static const String GET_MAIN_PRODUCTS = "https://script.google.com/macros/s/AKfycbyL_Xsmq3zFRVUeuZeqXuKeGScyTQSWNwNdsKx1Ki-rljPNUDiAGQHDtgcX13oIHPX4/exec?";
+  static const String GET_MAIN_PRODUCTS = "https://script.google.com/macros/s/AKfycbyrD5y6AyIZrOm9xTsUIZRdrqmfEKkTs0tBXl6ZgZ2HSPqxvcqPuxNZQ8geqhIunCJq/exec?";
 }
 
 class QueryParamsConstant {

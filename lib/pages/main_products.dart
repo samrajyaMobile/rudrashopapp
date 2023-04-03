@@ -1,6 +1,8 @@
 // ignore_for_file: must_be_immutable, use_build_context_synchronously
 import 'dart:convert';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rudrashop/http/model/main_products_response.dart';
 import 'package:rudrashop/pages/products_details.dart';
@@ -39,10 +41,15 @@ class _MainProductsListState extends State<MainProductsList> {
         title: Text(widget.sub3CategoryName ?? ""),
       ),
       body: Consumer<MainProductsListModel>(builder: (context, mainProducts, _) {
-        return Column(
-          children: [
-            Expanded(
-              child: ListView.builder(
+        return WillPopScope(
+          onWillPop: () async {
+            mainProducts.makeListNull();
+            return true;
+          },
+          child: Column(
+            children: [
+              Expanded(
+                  child: ListView.builder(
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
                 itemCount: mainProducts.productsList.length,
@@ -81,29 +88,13 @@ class _MainProductsListState extends State<MainProductsList> {
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Stack(
-                                children: [
-                                  Image.network(
-                                    "https://drive.google.com/uc?id=${products.image1 ?? ""}",
-                                    scale: 5,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Container(
-                                        decoration: BoxDecoration(color: AppColor.mainColor, borderRadius: BorderRadius.circular(25)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "${products.discount.toString() ?? ""}% off",
-                                            style: AppFonts.semiBoldWhite,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
+                              SizedBox(
+                                width: 80,
+                                height: 80,
+                                child: Image.network(
+                                  "https://drive.google.com/uc?id=${products.image1 ?? ""}",
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                               const SizedBox(
                                 width: 10,
@@ -133,11 +124,31 @@ class _MainProductsListState extends State<MainProductsList> {
                                     const SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
-                                      "₹ ${products.productMrp.toString() ?? ""}",
-                                      style: AppFonts.mainPrice,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "₹ ${products.productMrp.toString() ?? ""}",
+                                          style: AppFonts.mainPrice,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        Container(
+                                          decoration: BoxDecoration(color: AppColor.mainColor, borderRadius: BorderRadius.circular(25)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "${products.discount.toString() ?? ""}% off",
+                                              style: AppFonts.semiBoldWhite,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
                                     ),
                                     Text(
                                       "₹ ${products.productSp.toString() ?? ""} per pc",
@@ -164,9 +175,9 @@ class _MainProductsListState extends State<MainProductsList> {
                     ),
                   );
                 },
-              ),
-            )
-          ],
+              ))
+            ],
+          ),
         );
       }),
     ));
@@ -189,9 +200,17 @@ class MainProductsListModel extends ChangeNotifier {
         var finalData = MainProductsResponse.fromJson(jsonData);
         productsList = finalData.mainProducts ?? [];
         notifyListeners();
+      } else {
+        makeListNull();
       }
     } else {
       Navigator.pop(context);
+      makeListNull();
     }
+  }
+
+  makeListNull() {
+    productsList = [];
+    notifyListeners();
   }
 }

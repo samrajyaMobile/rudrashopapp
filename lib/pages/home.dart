@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -53,15 +54,17 @@ class _HomeState extends State<Home> {
                     (home.bannerList?.isNotEmpty ?? false)
                         ? CarouselSlider(
                             items: home.bannerList
-                                ?.map((e) => Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(10),
-                                            image: DecorationImage(
-                                                image: NetworkImage("https://drive.google.com/uc?id=${e.sliderImages ?? ""}"), fit: BoxFit.fill)),
-                                      ),
-                                    ))
+                                ?.map(
+                                  (e) => Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(5),
+                                          image: DecorationImage(
+                                              image: NetworkImage("https://drive.google.com/uc?export=view&id=${e.sliderImages ?? ""}"), fit: BoxFit.fill)),
+                                    ),
+                                  ),
+                                )
                                 .toList(),
                             carouselController: home.carouselController,
                             options: CarouselOptions(
@@ -97,9 +100,12 @@ class _HomeState extends State<Home> {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Image.network(
-                                      "https://drive.google.com/uc?id=${category?.categoryImage ?? ""}",
-                                      scale: 8,
+                                    SizedBox(
+                                      height: 60,
+                                      width: 60,
+                                      child: Image.network(
+                                        "https://drive.google.com/uc?id=${category?.categoryImage ?? ""}",
+                                      ),
                                     ),
                                     const SizedBox(
                                       height: 5,
