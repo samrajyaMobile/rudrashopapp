@@ -14,10 +14,7 @@ class MainProductsList extends StatefulWidget {
   String? sub3CategoryId;
   String? sub3CategoryName;
 
-  MainProductsList(
-      {super.key,
-      required this.sub3CategoryId,
-      required this.sub3CategoryName});
+  MainProductsList({super.key, required this.sub3CategoryId, required this.sub3CategoryName});
 
   @override
   State<MainProductsList> createState() => _MainProductsListState();
@@ -27,8 +24,7 @@ class _MainProductsListState extends State<MainProductsList> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<MainProductsListModel>(context, listen: false)
-          .getCategories(context);
+      Provider.of<MainProductsListModel>(context, listen: false).getCategories(context, widget.sub3CategoryId ?? "");
     });
 
     super.initState();
@@ -42,8 +38,7 @@ class _MainProductsListState extends State<MainProductsList> {
         backgroundColor: AppColor.mainColor,
         title: Text(widget.sub3CategoryName ?? ""),
       ),
-      body:
-          Consumer<MainProductsListModel>(builder: (context, mainProducts, _) {
+      body: Consumer<MainProductsListModel>(builder: (context, mainProducts, _) {
         return Column(
           children: [
             Expanded(
@@ -71,7 +66,7 @@ class _MainProductsListState extends State<MainProductsList> {
                                     pGst: products.pGst.toString(),
                                     discount: products.discount.toString(),
                                     productMoq: products.productMoq.toString(),
-                                    productsDic: products.productsDics.toString(),
+                                    productsDic: products.productsDescr.toString(),
                                     image1: products.image1.toString(),
                                     image2: products.image2.toString(),
                                     image3: products.image3.toString(),
@@ -80,9 +75,7 @@ class _MainProductsListState extends State<MainProductsList> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(color: AppColor.mainColor)),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: AppColor.mainColor)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -99,10 +92,7 @@ class _MainProductsListState extends State<MainProductsList> {
                                     child: Align(
                                       alignment: Alignment.topLeft,
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                            color: AppColor.mainColor,
-                                            borderRadius:
-                                                BorderRadius.circular(25)),
+                                        decoration: BoxDecoration(color: AppColor.mainColor, borderRadius: BorderRadius.circular(25)),
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
@@ -186,12 +176,12 @@ class _MainProductsListState extends State<MainProductsList> {
 class MainProductsListModel extends ChangeNotifier {
   List<MainProductData> productsList = [];
 
-  getCategories(BuildContext context) async {
-    showDialog(
-        context: context,
-        builder: (context) => const LoadingDialog(),
-        barrierDismissible: false);
-    var response = await http.get(Uri.parse(AppConstant.POST_MAIN_PRODUCTS));
+  getCategories(BuildContext context, String sub3Category) async {
+    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
+
+    var url = "${AppConstant.GET_MAIN_PRODUCTS}${QueryParamsConstant.SUB_3_CATEGORY_ID}=$sub3Category";
+
+    var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       Navigator.pop(context);
       var jsonData = json.decode(response.body);

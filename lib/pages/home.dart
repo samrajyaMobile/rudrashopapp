@@ -29,8 +29,7 @@ class _HomeState extends State<Home> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       await Provider.of<HomeModel>(context, listen: false).getSlider(context);
-      await Provider.of<HomeModel>(context, listen: false)
-          .getCategories(context);
+      await Provider.of<HomeModel>(context, listen: false).getCategories(context);
     });
 
     super.initState();
@@ -58,12 +57,9 @@ class _HomeState extends State<Home> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: Container(
                                         decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
+                                            borderRadius: BorderRadius.circular(10),
                                             image: DecorationImage(
-                                                image: NetworkImage(
-                                                    "https://drive.google.com/uc?id=${e.sliderImages ?? ""}"),
-                                                fit: BoxFit.fill)),
+                                                image: NetworkImage("https://drive.google.com/uc?id=${e.sliderImages ?? ""}"), fit: BoxFit.fill)),
                                       ),
                                     ))
                                 .toList(),
@@ -92,10 +88,8 @@ class _HomeState extends State<Home> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => SubCategoryScreen(
-                                              categoryName:
-                                                  category?.categoryName ?? "",
-                                              categoryId:
-                                                  category?.categorySid ?? "",
+                                              categoryName: category?.categoryName ?? "",
+                                              categoryId: category?.categoryId ?? "",
                                             )));
                               },
                               child: Padding(
@@ -112,8 +106,7 @@ class _HomeState extends State<Home> {
                                     ),
                                     Text(
                                       category?.categoryName ?? "",
-                                      style: TextStyle(
-                                          color: AppColor.black1, fontSize: 12),
+                                      style: TextStyle(color: AppColor.black1, fontSize: 12),
                                     )
                                   ],
                                 ),
@@ -142,10 +135,7 @@ class HomeModel extends ChangeNotifier {
   final CarouselController carouselController = CarouselController();
 
   getSlider(BuildContext context) async {
-    showDialog(
-        context: context,
-        builder: (context) => const LoadingDialog(),
-        barrierDismissible: false);
+    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
     var response = await http.get(Uri.parse(AppConstant.GET_SLIDERS));
     if (response.statusCode == 200) {
       Navigator.pop(context);
@@ -161,10 +151,8 @@ class HomeModel extends ChangeNotifier {
   }
 
   getCategories(BuildContext context) async {
-    showDialog(
-        context: context,
-        builder: (context) => const LoadingDialog(),
-        barrierDismissible: false);
+    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
+
     var response = await http.get(Uri.parse(AppConstant.GET_CATEGORIES));
 
     if (response.statusCode == 200) {
@@ -172,11 +160,16 @@ class HomeModel extends ChangeNotifier {
       var jsonData = json.decode(response.body);
       if (jsonData["status"] ?? false) {
         var finalData = MainCategoryResponse.fromJson(jsonData);
-        categoryList = finalData.categories ?? [];
+        categoryList = finalData.category ?? [];
+        notifyListeners();
+      } else {
+        categoryList = [];
         notifyListeners();
       }
     } else {
       Navigator.pop(context);
+      categoryList = [];
+      notifyListeners();
     }
   }
 }

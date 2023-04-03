@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final mainCategoryResponse = mainCategoryResponseFromJson(jsonString);
+
 import 'dart:convert';
 
 MainCategoryResponse mainCategoryResponseFromJson(String str) => MainCategoryResponse.fromJson(json.decode(str));
@@ -8,46 +12,46 @@ class MainCategoryResponse {
   MainCategoryResponse({
     this.status,
     this.message,
-    this.categories,
+    this.category,
   });
 
   bool? status;
   String? message;
-  List<CategoryData>? categories;
+  List<CategoryData>? category;
 
   factory MainCategoryResponse.fromJson(Map<String, dynamic> json) => MainCategoryResponse(
         status: json["status"],
         message: json["message"],
-        categories: List<CategoryData>.from(json["categories"].map((x) => CategoryData.fromJson(x))),
+        category: List<CategoryData>.from(json["category"].map((x) => CategoryData.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "message": message,
-        "categories": List<dynamic>.from(categories?.map((x) => x.toJson()) ?? []),
+        "category": List<dynamic>.from(category?.map((x) => x.toJson()) ?? []),
       };
 }
 
 class CategoryData {
   CategoryData({
-    this.categorySid,
+    this.categoryId,
     this.categoryName,
     this.categoryImage,
   });
 
-  String? categorySid;
+  String? categoryId;
   String? categoryName;
   String? categoryImage;
 
   factory CategoryData.fromJson(Map<String, dynamic> json) => CategoryData(
-        categorySid: json["category_sid"],
-        categoryName: json["category_name"],
-        categoryImage: json["category_image"],
+        categoryId: json["categoryId"],
+        categoryName: json["categoryName"],
+        categoryImage: json["categoryImage"],
       );
 
   Map<String, dynamic> toJson() => {
-        "category_sid": categorySid,
-        "category_name": categoryName,
-        "category_image": categoryImage,
+        "categoryId": categoryId,
+        "categoryName": categoryName,
+        "categoryImage": categoryImage,
       };
 }

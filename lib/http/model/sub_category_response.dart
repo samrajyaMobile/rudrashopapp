@@ -34,31 +34,31 @@ class SubCategoryResponse {
 
 class SubCategoryData {
   SubCategoryData({
-    this.subCategoryId,
-    this.categoryName,
     this.categoryId,
+    this.categoryName,
+    this.subCategoryId,
     this.subCategoryName,
     this.subCategoryImage,
   });
 
-  String? subCategoryId;
-  String? categoryName;
   String? categoryId;
+  String? categoryName;
+  String? subCategoryId;
   String? subCategoryName;
   String? subCategoryImage;
 
   factory SubCategoryData.fromJson(Map<String, dynamic> json) => SubCategoryData(
-    subCategoryId: json["sub_category_id"],
-    categoryName: json["categoryName"],
     categoryId: json["categoryId"],
+    categoryName: json["categoryName"],
+    subCategoryId: json["subCategoryId"],
     subCategoryName: json["subCategoryName"],
     subCategoryImage: json["subCategoryImage"],
   );
 
   Map<String, dynamic> toJson() => {
-    "sub_category_id": subCategoryId,
-    "categoryName": categoryName,
     "categoryId": categoryId,
+    "categoryName": categoryName,
+    "subCategoryId": subCategoryId,
     "subCategoryName": subCategoryName,
     "subCategoryImage": subCategoryImage,
   };
