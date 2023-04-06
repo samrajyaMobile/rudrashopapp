@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.example.rudrashop.rudrashop",
+  "applicationId": "com.example.rudrashopapp",
   "variantName": "debug",
   "elements": []
 }

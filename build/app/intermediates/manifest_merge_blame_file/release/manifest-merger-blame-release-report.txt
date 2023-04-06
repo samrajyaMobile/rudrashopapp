@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.rudrashop.rudrashop"
+3    package="com.example.rudrashopapp"
 4    android:versionCode="1"
 5    android:versionName="1.0.0" >
 6
@@ -11,34 +11,34 @@
 9-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:4:5-66
-11-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:4:22-64
+11-->[:google_sign_in_android] D:\rudrashopapp\build\google_sign_in_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:5-67
+11-->[:google_sign_in_android] D:\rudrashopapp\build\google_sign_in_android\intermediates\merged_manifest\release\AndroidManifest.xml:9:22-64
 12
 13    <application
 14        android:name="android.app.Application"
-14-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:8:9-42
+14-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:5:9-42
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-15-->[androidx.core:core:1.6.0] C:\Users\w3nuts\.gradle\caches\transforms-3\4ca28c4a71705f8a687c69dda140a277\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+15-->[androidx.core:core:1.6.0] C:\Users\w3nuts\.gradle\caches\transforms-3\9d13f608411ebd1b864ae55bb53a8fcc\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
 16        android:icon="@mipmap/ic_launcher"
-16-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:9:9-43
-17        android:label="rudrashop" >
-17-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:7:9-34
+16-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:6:9-43
+17        android:label="rudrashopapp" >
+17-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:4:9-37
 18        <activity
-18-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:10:9-30:20
-19            android:name="com.example.rudrashop.rudrashop.MainActivity"
-19-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:11:13-41
+18-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:7:9-27:20
+19            android:name="com.example.rudrashopapp.MainActivity"
+19-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:8:13-41
 20            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-20-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:15:13-163
+20-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:12:13-163
 21            android:exported="true"
-21-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:12:13-36
+21-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:9:13-36
 22            android:hardwareAccelerated="true"
-22-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:16:13-47
+22-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:13:13-47
 23            android:launchMode="singleTop"
-23-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:13:13-43
+23-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:10:13-43
 24            android:theme="@style/LaunchTheme"
-24-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:14:13-47
+24-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:11:13-47
 25            android:windowSoftInputMode="adjustResize" >
-25-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:17:13-55
+25-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:14:13-55
 26
 27            <!--
 28                 Specifies an Android theme to apply to this Activity as soon as
@@ -47,21 +47,21 @@
 31                 to determine the Window background behind the Flutter UI.
 32            -->
 33            <meta-data
-33-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:22:13-25:17
+33-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:19:13-22:17
 34                android:name="io.flutter.embedding.android.NormalTheme"
-34-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:23:15-70
+34-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:20:15-70
 35                android:resource="@style/NormalTheme" />
-35-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:24:15-52
+35-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:21:15-52
 36
 37            <intent-filter>
-37-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:26:13-29:29
+37-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:23:13-26:29
 38                <action android:name="android.intent.action.MAIN" />
-38-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:27:17-68
-38-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:27:25-66
+38-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:24:17-68
+38-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:24:25-66
 39
 40                <category android:name="android.intent.category.LAUNCHER" />
-40-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:28:17-76
-40-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:28:27-74
+40-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:25:17-76
+40-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:25:27-74
 41            </intent-filter>
 42        </activity>
 43        <!--
@@ -69,24 +69,65 @@
 45             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 46        -->
 47        <meta-data
-47-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:33:9-35:33
+47-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:30:9-32:33
 48            android:name="flutterEmbedding"
-48-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:34:13-44
+48-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:31:13-44
 49            android:value="2" />
-49-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:35:13-30
+49-->D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:32:13-30
 50
 51        <uses-library
-51-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+51-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 52            android:name="androidx.window.extensions"
-52-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+52-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
 53            android:required="false" />
-53-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+53-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
 54        <uses-library
-54-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+54-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
 55            android:name="androidx.window.sidecar"
-55-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+55-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
 56            android:required="false" />
-56-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\dee59bb480020f42d53c2ea15e4501f7\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
-57    </application>
-58
-59</manifest>
+56-->[androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+57
+58        <activity
+58-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:23:9-27:75
+59            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+59-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:24:13-93
+60            android:excludeFromRecents="true"
+60-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:25:13-46
+61            android:exported="false"
+61-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:26:13-37
+62            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+62-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:27:13-72
+63        <!--
+64            Service handling Google Sign-In user revocation. For apps that do not integrate with
+65            Google Sign-In, this service will never be started.
+66        -->
+67        <service
+67-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:33:9-37:51
+68            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+68-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:34:13-89
+69            android:exported="true"
+69-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:35:13-36
+70            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+70-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:36:13-107
+71            android:visibleToInstantApps="true" />
+71-->[com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:37:13-48
+72
+73        <activity
+73-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\w3nuts\.gradle\caches\transforms-3\b121b3b78989ee63d33a65614e3f7adb\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+74            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+74-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\w3nuts\.gradle\caches\transforms-3\b121b3b78989ee63d33a65614e3f7adb\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+75            android:exported="false"
+75-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\w3nuts\.gradle\caches\transforms-3\b121b3b78989ee63d33a65614e3f7adb\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+76            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+76-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\w3nuts\.gradle\caches\transforms-3\b121b3b78989ee63d33a65614e3f7adb\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+77
+78        <meta-data
+78-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\3794f8805813d716e1232c1d56f0ad65\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+79            android:name="com.google.android.gms.version"
+79-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\3794f8805813d716e1232c1d56f0ad65\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+80            android:value="@integer/google_play_services_version" />
+80-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\3794f8805813d716e1232c1d56f0ad65\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+81    </application>
+82
+83</manifest>

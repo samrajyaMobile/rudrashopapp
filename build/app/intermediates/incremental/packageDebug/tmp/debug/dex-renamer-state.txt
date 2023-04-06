@@ -1,4 +1,1 @@
-#Mon Apr 03 18:23:47 IST 2023
-base.0=D\:\\rudrashopapp\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
+#Fri Apr 07 11:22:54 IST 2023

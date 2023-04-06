@@ -11,11 +11,13 @@ class AppFonts {
   static TextStyle textFieldBlack = TextStyle(color: AppColor.black1, fontFamily: "medium", fontSize: 20);
   static TextStyle textFieldWhite = TextStyle(color: AppColor.white, fontFamily: "medium", fontSize: 20);
   static TextStyle semiBoldWhite = TextStyle(color: AppColor.white, fontFamily: "semibold", fontSize: 15);
+  static TextStyle semiBoldWhite12 = TextStyle(color: AppColor.white, fontFamily: "semibold", fontSize: 12);
   static TextStyle semiBoldBlack = TextStyle(color: AppColor.black1, fontFamily: "semibold", fontSize: 15);
   static TextStyle semiBoldMain = TextStyle(color: AppColor.mainColor, fontFamily: "semibold", fontSize: 15);
   static TextStyle mainPrice = TextStyle(color: AppColor.black3, fontFamily: "regular", fontSize: 12,decoration: TextDecoration.lineThrough);
   static TextStyle regularBlack = TextStyle(color: AppColor.black1, fontFamily: "regular", fontSize: 12);
   static TextStyle mediumGray = TextStyle(color: AppColor.black4, fontFamily: "medium", fontSize: 15);
   static TextStyle mediumMainColor = TextStyle(color: AppColor.mainColor, fontFamily: "medium", fontSize: 15);
+  static TextStyle mediumMainRed = TextStyle(color: AppColor.red, fontFamily: "medium", fontSize: 15);
 
 }

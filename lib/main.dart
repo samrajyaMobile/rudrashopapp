@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rudrashop/pages/deal_products.dart';
 import 'package:rudrashop/pages/home.dart';
 import 'package:rudrashop/pages/dashboard.dart';
 import 'package:rudrashop/pages/login_screen.dart';
 import 'package:rudrashop/pages/main_products.dart';
+import 'package:rudrashop/pages/new_arrivals_products.dart';
 import 'package:rudrashop/pages/products_details.dart';
 import 'package:rudrashop/pages/signup.dart';
 import 'package:rudrashop/pages/sub3_category.dart';
@@ -28,6 +30,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => Sub3CategoryModel()),
         ChangeNotifierProvider(create: (context) => MainProductsListModel()),
         ChangeNotifierProvider(create: (context) => ProductsDetailsModel()),
+        ChangeNotifierProvider(create: (context) => NewArrivalsProductsModel()),
+        ChangeNotifierProvider(create: (context) => DealProductsModel()),
+
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

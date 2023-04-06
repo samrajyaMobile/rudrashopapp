@@ -82,7 +82,9 @@ class _MainProductsListState extends State<MainProductsList> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: AppColor.mainColor)),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(5),
+                        color: AppColor.black7
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
