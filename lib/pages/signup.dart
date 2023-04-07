@@ -172,14 +172,20 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 20,
               ),
               InkWell(
-                onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const LoginScreen()));
+                onTap: () {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginScreen()));
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("Already have an account?",style: AppFonts.textFieldBlack,),
-                    Image.asset("assets/images/arrow_right.png",scale: 2,)
+                    Text(
+                      "Already have an account?",
+                      style: AppFonts.textFieldBlack,
+                    ),
+                    Image.asset(
+                      "assets/images/arrow_right.png",
+                      scale: 2,
+                    )
                   ],
                 ),
               ),
@@ -194,9 +200,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       backgroundColor: MaterialStateProperty.all(AppColor.mainColor),
                       overlayColor: MaterialStateProperty.all(Colors.white10),
                     ),
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>const Dashboard()));
-                    },
+                    onPressed: () {},
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(

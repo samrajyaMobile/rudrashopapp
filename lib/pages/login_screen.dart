@@ -1,18 +1,16 @@
+// ignore_for_file: use_build_context_synchronously
 import 'dart:convert';
-import 'package:googleapis/drive/v3.dart' as drive;
-import 'package:googleapis_auth/googleapis_auth.dart' as auth;
 import 'package:flutter/material.dart';
-import 'package:googleapis/drive/v3.dart';
 import 'package:rudrashop/http/model/login_response.dart';
+import 'package:rudrashop/pages/dashboard.dart';
 import 'package:rudrashop/pages/signup.dart';
 import 'package:rudrashop/utils/app_colors.dart';
+import 'package:rudrashop/utils/app_constant.dart';
+import 'package:rudrashop/utils/app_dialog.dart';
 import 'package:rudrashop/utils/app_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import 'package:googleapis/drive/v3.dart' ;
-import 'package:googleapis_auth/auth_io.dart';
-import 'dart:io';
-import 'dart:typed_data';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -25,7 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {});
-
     super.initState();
   }
 
@@ -50,9 +47,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextFormField(
+                        controller: login._email,
                         style: AppFonts.textFieldBlack,
                         decoration: InputDecoration(
-                          label: Text("E-mail"),
+                          label: const Text("E-mail"),
                           labelStyle: AppFonts.textFieldLabelGary,
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -68,9 +66,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: TextFormField(
+                        controller: login._password,
+                        obscureText: true,
                         style: AppFonts.textFieldBlack,
                         decoration: InputDecoration(
-                          label: Text("Password"),
+                          label: const Text("Password"),
                           labelStyle: AppFonts.textFieldLabelGary,
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -83,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupScreen()));
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignupScreen()));
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -110,7 +110,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           backgroundColor: MaterialStateProperty.all(AppColor.mainColor),
                           overlayColor: MaterialStateProperty.all(Colors.white10),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          login.validator(context);
+                        },
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: Text(
@@ -130,24 +132,56 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class LoginModel extends ChangeNotifier {
-
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
+  validator(BuildContext context) {
+    if (_email.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please enter your Email Address")));
+    } else if (_password.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please enter your Password")));
+    } else {
+      login(context);
+    }
+  }
 
-  login() async {
+  login(BuildContext context) async {
+    showDialog(context: context, builder: (context) => const LoadingDialog());
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String uEmail = _email.text.toLowerCase().trim();
     String uPassword = _password.text.trim();
+    String url = AppConstant.GET_LOGIN;
 
-    var response = await http.get(Uri.parse(
-        "https://script.google.com/macros/s/AKfycby1cI7i25CsVF35-lj2K0-wQiKc5K9JHJ9S5oLdSdawa_XsnXeDxJYILP8DIkQgjtwO/exec?action=login&u_email=$uEmail&u_password=$uPassword"));
+    var response = await http.get(Uri.parse("$url&u_email=$uEmail&u_password=$uPassword"));
 
     if (response.statusCode == 200) {
+      Navigator.pop(context);
       var jsonData = json.decode(response.body);
-      if (jsonData["status"] ?? false) {
-        var data = LoginResponse.fromJson(jsonData);
-        if (data.status ?? false) {}
+
+      var data = LoginResponse.fromJson(jsonData);
+
+      if (data.status ?? false) {
+        sharedPreferences.setString(SharedPrefConstant.U_EMAIL, data.user?.first.uEmail ?? "");
+        sharedPreferences.setString(SharedPrefConstant.U_NAME, data.user?.first.uName ?? "");
+        sharedPreferences.setString(SharedPrefConstant.U_SURNAME, data.user?.first.uSurname ?? "");
+        sharedPreferences.setString(SharedPrefConstant.U_MO_NUMBER, data.user?.first.uMoNumber.toString() ?? "");
+        sharedPreferences.setString(SharedPrefConstant.U_BUSINESS_NAME, data.user?.first.uBusinessName ?? "");
+        sharedPreferences.setString(SharedPrefConstant.U_ADDRESS, data.user?.first.uAddress ?? "");
+        sharedPreferences.setString(SharedPrefConstant.U_CITY, data.user?.first.uCity ?? "");
+        sharedPreferences.setString(SharedPrefConstant.U_PIN, data.user?.first.uPincode.toString() ?? "");
+
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Dashboard()));
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) => ErrorDialog(
+            errorTitle: 'Login Error',
+            errorMsg: data.message,
+          ),
+        );
       }
-    } else {}
+    } else {
+      Navigator.pop(context);
+    }
   }
 }

@@ -5,6 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rudrashop/utils/app_colors.dart';
+import 'package:rudrashop/utils/app_fonts.dart';
 
 class ProductsDetails extends StatefulWidget {
   String? pId;
@@ -16,6 +17,7 @@ class ProductsDetails extends StatefulWidget {
   String? sub3CategoryName;
   String? productName;
   String? productSp;
+  String? productMrp;
   String? pGst;
   String? discount;
   String? productMoq;
@@ -35,6 +37,7 @@ class ProductsDetails extends StatefulWidget {
     required this.sub3CategoryName,
     required this.productName,
     required this.productSp,
+    required this.productMrp,
     required this.pGst,
     required this.discount,
     required this.productMoq,
@@ -51,8 +54,10 @@ class ProductsDetails extends StatefulWidget {
 class _ProductsDetailsState extends State<ProductsDetails> {
   @override
   void initState() {
-    Provider.of<ProductsDetailsModel>(context, listen: false).setImageInSlider(
-        widget.image1 ?? "", widget.image2 ?? "", widget.image3 ?? "");
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await Provider.of<ProductsDetailsModel>(context, listen: false).setImageInSlider(widget.image1 ?? "", widget.image2 ?? "", widget.image3 ?? "");
+    });
+
     super.initState();
   }
 
@@ -60,37 +65,156 @@ class _ProductsDetailsState extends State<ProductsDetails> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: AppColor.black7,
+        bottomSheet: Container(
+          width: MediaQuery.of(context).size.width,
+          color: AppColor.black2,
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Text(
+              "Add ${widget.productMoq} pcs to purchase",
+              style: AppFonts.semiBoldWhite,
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
         appBar: AppBar(
           title: const Text("Back"),
           backgroundColor: AppColor.mainColor,
         ),
         body: Consumer<ProductsDetailsModel>(builder: (context, products, _) {
-          return Column(
-            children: [
-              (products.imageList?.isNotEmpty ?? false)
-                  ? CarouselSlider(
-                      items: products.imageList
-                          ?.map((e) => Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              "https://drive.google.com/uc?id=${e ?? ""}"),
-                                          fit: BoxFit.fill)),
+          return WillPopScope(
+            onWillPop: () async {
+              products.setListNull();
+              return true;
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                (products.imageList?.isNotEmpty ?? false)
+                    ? CarouselSlider(
+                        items: products.imageList
+                            ?.map(
+                              (e) => Container(
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage("https://drive.google.com/uc?id=${e ?? ""}"),
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
-                              ))
-                          .toList(),
-                      carouselController: products.carouselController,
-                      options: CarouselOptions(
-                        scrollPhysics: const BouncingScrollPhysics(),
-                        autoPlay: true,
-                        aspectRatio: 2,
-                        viewportFraction: 1,
-                      ),
-                    )
-                  : Container(),
-            ],
+                              ),
+                            )
+                            .toList(),
+                        carouselController: products.carouselController,
+                        options: CarouselOptions(
+                          scrollPhysics: const BouncingScrollPhysics(),
+                          autoPlay: true,
+                          aspectRatio: 1,
+                          viewportFraction: 1,
+                        ),
+                      )
+                    : Container(),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  color: AppColor.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.productName ?? "",
+                          style: AppFonts.semiBoldBlack,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Product Description : ",
+                          style: AppFonts.textFieldLabelGary,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        products.readMore
+                            ? Text(
+                                widget.productsDic ?? "",
+                              )
+                            : Text(
+                                widget.productsDic ?? "",
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: InkWell(
+                              onTap: () {
+                                products.readMoreTrueFalse();
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black5),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    products.readMore ? "Read More" : "Read Less",
+                                    style: AppFonts.semiBoldBlack,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        /*Row(
+                          children: [
+                            Text(
+                              "₹${widget.productSp ?? ""}",
+                              style: AppFonts.mediumGray20,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(color: AppColor.mainColor, borderRadius: BorderRadius.circular(25)),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(
+                                  "-${widget.productSp ?? ""} OFF",
+                                  style: AppFonts.semiBoldWhite,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "₹${widget.productSp ?? ""}",
+                          style: AppFonts.mediumMainRed20,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "Min Qty : ${widget.productMoq.toString() ?? ""} pcs",
+                          style: AppFonts.regularBlack,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),*/
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           );
         }),
       ),
@@ -100,6 +224,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
 
 class ProductsDetailsModel extends ChangeNotifier {
   List<String>? imageList = [];
+  bool readMore = false;
 
   final CarouselController carouselController = CarouselController();
 
@@ -112,6 +237,22 @@ class ProductsDetailsModel extends ChangeNotifier {
     }
     if (image2.isNotEmpty || image2 != "") {
       imageList?.add(image2);
+    }
+    notifyListeners();
+  }
+
+  setListNull() {
+    imageList = [];
+    notifyListeners();
+  }
+
+  readMoreTrueFalse() {
+    if (readMore) {
+      readMore = false;
+      notifyListeners();
+    } else {
+      readMore = true;
+      notifyListeners();
     }
   }
 }

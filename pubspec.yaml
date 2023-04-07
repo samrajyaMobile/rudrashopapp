@@ -46,6 +46,7 @@ dependencies:
   googleapis_auth: ^1.4.0
   google_sign_in: ^6.0.2
   flutter_svg: ^2.0.4
+  fluttertoast: ^8.2.1
 
 dev_dependencies:
   flutter_test:

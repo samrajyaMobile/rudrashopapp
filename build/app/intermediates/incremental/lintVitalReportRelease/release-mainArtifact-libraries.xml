@@ -30,6 +30,19 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="D:\rudrashopapp\android@@:fluttertoast::release"
+      jars="D:\rudrashopapp\build\fluttertoast\.transforms\da6b768807b517dc763f1e392b200019\transformed\out\jars\classes.jar;D:\rudrashopapp\build\fluttertoast\.transforms\da6b768807b517dc763f1e392b200019\transformed\out\jars\libs\R.jar"
+      resolved="com.example.FlutterToast:fluttertoast:unspecified"
+      folder="D:\rudrashopapp\build\fluttertoast\.transforms\da6b768807b517dc763f1e392b200019\transformed\out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
       name="D:\rudrashopapp\android@@:path_provider_android::release"
       jars="D:\rudrashopapp\build\path_provider_android\.transforms\85fd0f32cf0c89e930e685d014d4ebca\transformed\out\jars\classes.jar;D:\rudrashopapp\build\path_provider_android\.transforms\85fd0f32cf0c89e930e685d014d4ebca\transformed\out\jars\libs\R.jar"
       resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"

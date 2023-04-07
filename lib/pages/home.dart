@@ -86,7 +86,7 @@ class _HomeState extends State<Home> {
                                                           productsDic: e.productsDic,
                                                           image1: e.image1,
                                                           image2: e.image2,
-                                                          image3: e.image3,
+                                                          image3: e.image3, productMrp: e.productMrp,
                                                         )));
                                           } else if (e.navigationPage?.toLowerCase() == "deal") {
                                             Navigator.push(context, MaterialPageRoute(builder: (context) => const DealProducts()));

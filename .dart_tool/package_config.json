@@ -152,6 +152,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/fluttertoast-8.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "google_identity_services_web",
       "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/google_identity_services_web-0.2.1",
       "packageUri": "lib/",
@@ -524,7 +530,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-06T13:46:04.196203Z",
+  "generated": "2023-04-07T11:28:47.135381Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }

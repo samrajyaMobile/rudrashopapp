@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -73,6 +72,7 @@ class _DealProductsState extends State<DealProducts> {
                                 image1: products.image1.toString(),
                                 image2: products.image2.toString(),
                                 image3: products.image3.toString(),
+                                productMrp: products.productMrp.toString(),
                               ),
                             ),
                           );

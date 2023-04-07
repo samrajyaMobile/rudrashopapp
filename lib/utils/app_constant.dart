@@ -5,8 +5,8 @@ class AppConstant {
   static const String GET_SLIDERS = "https://script.google.com/macros/s/AKfycbwzH-VFdTr6fnT2NAMilTqmTpzvAU1oS5bf34wwcDw9YjD2rrBWQKwSsRQK_TSicqTgYg/exec";
   static const String GET_PRODUCTS = "https://script.google.com/macros/s/AKfycbx3IkWNj74AhJX4Nfgr1n97fNHiRgGa-YdbuzLOot3ZLk-KRhsvxvYpL__IMRKxMDzZ/exec";
 
-  static const String POST_LOGIN =
-      "https://script.google.com/macros/s/AKfycbzmkaPojN8_JrJaoAnD29bqR2u8BCwgKAToe8d2_N1GlXeUGhhZph-fbaZcqObeqKEc/exec?action=login";
+  static const String GET_LOGIN =
+      "https://script.google.com/macros/s/AKfycby1cI7i25CsVF35-lj2K0-wQiKc5K9JHJ9S5oLdSdawa_XsnXeDxJYILP8DIkQgjtwO/exec?action=login";
   static const String SIGNUP =
       "https://script.google.com/macros/s/AKfycbzmkaPojN8_JrJaoAnD29bqR2u8BCwgKAToe8d2_N1GlXeUGhhZph-fbaZcqObeqKEc/exec?action=register";
 
@@ -26,4 +26,15 @@ class QueryParamsConstant {
   static const CATEGORY_ID = "categoryId";
   static const SUB_CATEGORY_ID = "subCategoryId";
   static const SUB_3_CATEGORY_ID = "sub3CategoryId";
+}
+
+class SharedPrefConstant{
+  static const U_NAME = "u_name";
+  static const U_SURNAME = "u_surname";
+  static const U_EMAIL = "u_email";
+  static const U_MO_NUMBER = "u_mo_number";
+  static const U_BUSINESS_NAME = "u_business";
+  static const U_ADDRESS = "u_address";
+  static const U_CITY = "u_city";
+  static const U_PIN = "u_pin";
 }

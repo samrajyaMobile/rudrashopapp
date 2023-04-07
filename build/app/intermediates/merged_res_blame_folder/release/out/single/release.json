@@ -80,6 +80,10 @@
         "source": "com.example.rudrashopapp-jetified-play-services-base-18.0.1-5:/color/common_google_signin_btn_text_dark.xml"
     },
     {
+        "merged": "com.example.rudrashopapp-merged_res-14:/layout_toast_custom.xml.flat",
+        "source": "com.example.rudrashopapp-packaged_res-15:/layout/toast_custom.xml"
+    },
+    {
         "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-hdpi_ic_launcher.png.flat",
         "source": "com.example.rudrashopapp-main-7:/mipmap-hdpi/ic_launcher.png"
     },
@@ -240,6 +244,10 @@
         "source": "com.example.rudrashopapp-core-1.6.0-4:/drawable-hdpi-v4/notification_bg_low_normal.9.png"
     },
     {
+        "merged": "com.example.rudrashopapp-merged_res-14:/drawable_corner.xml.flat",
+        "source": "com.example.rudrashopapp-packaged_res-15:/drawable/corner.xml"
+    },
+    {
         "merged": "com.example.rudrashopapp-merged_res-14:/drawable_notification_tile_bg.xml.flat",
         "source": "com.example.rudrashopapp-core-1.6.0-4:/drawable/notification_tile_bg.xml"
     },
@@ -250,6 +258,10 @@
     {
         "merged": "com.example.rudrashopapp-merged_res-14:/drawable-mdpi-v4_notify_panel_notification_icon_bg.png.flat",
         "source": "com.example.rudrashopapp-core-1.6.0-4:/drawable-mdpi-v4/notify_panel_notification_icon_bg.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/drawable_toast_bg.xml.flat",
+        "source": "com.example.rudrashopapp-packaged_res-15:/drawable/toast_bg.xml"
     },
     {
         "merged": "com.example.rudrashopapp-merged_res-14:/drawable-mdpi-v4_notification_bg_low_normal.9.png.flat",

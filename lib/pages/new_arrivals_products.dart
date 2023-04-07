@@ -73,6 +73,7 @@ class _NewArrivalsProductsState extends State<NewArrivalsProducts> {
                               image1: products.image1.toString(),
                               image2: products.image2.toString(),
                               image3: products.image3.toString(),
+                              productMrp: products.productMrp,
                             ),
                           ),
                         );
@@ -184,7 +185,6 @@ class _NewArrivalsProductsState extends State<NewArrivalsProducts> {
 }
 
 class NewArrivalsProductsModel extends ChangeNotifier {
-
   List<NewArrivalProductData> productsList = [];
 
   getNewArrivals(BuildContext context) async {

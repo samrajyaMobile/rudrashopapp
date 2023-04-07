@@ -13,7 +13,8 @@ com.example.rudrashopapp-rs-11 D:\rudrashopapp\build\app\generated\res\rs\releas
 com.example.rudrashopapp-mergeReleaseResources-12 D:\rudrashopapp\build\app\intermediates\incremental\release\mergeReleaseResources\merged.dir
 com.example.rudrashopapp-mergeReleaseResources-13 D:\rudrashopapp\build\app\intermediates\incremental\release\mergeReleaseResources\stripped.dir
 com.example.rudrashopapp-merged_res-14 D:\rudrashopapp\build\app\intermediates\merged_res\release
-com.example.rudrashopapp-packaged_res-15 D:\rudrashopapp\build\google_sign_in_android\intermediates\packaged_res\release
-com.example.rudrashopapp-packaged_res-16 D:\rudrashopapp\build\path_provider_android\intermediates\packaged_res\release
-com.example.rudrashopapp-packaged_res-17 D:\rudrashopapp\build\shared_preferences_android\intermediates\packaged_res\release
-com.example.rudrashopapp-packaged_res-18 D:\rudrashopapp\build\sqflite\intermediates\packaged_res\release
+com.example.rudrashopapp-packaged_res-15 D:\rudrashopapp\build\fluttertoast\intermediates\packaged_res\release
+com.example.rudrashopapp-packaged_res-16 D:\rudrashopapp\build\google_sign_in_android\intermediates\packaged_res\release
+com.example.rudrashopapp-packaged_res-17 D:\rudrashopapp\build\path_provider_android\intermediates\packaged_res\release
+com.example.rudrashopapp-packaged_res-18 D:\rudrashopapp\build\shared_preferences_android\intermediates\packaged_res\release
+com.example.rudrashopapp-packaged_res-19 D:\rudrashopapp\build\sqflite\intermediates\packaged_res\release
