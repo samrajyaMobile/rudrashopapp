@@ -3,8 +3,10 @@
 import 'dart:convert';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:rudrashop/http/model/main_products_response.dart';
 import 'package:rudrashop/http/model/sub3_category_response.dart';
 import 'package:rudrashop/pages/main_products_list.dart';
+import 'package:rudrashop/pages/products_details.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:rudrashop/utils/app_constant.dart';
@@ -17,7 +19,8 @@ class Sub3Category extends StatefulWidget {
   String? subCategoryName;
   String? subCategoryId;
 
-  Sub3Category({super.key, required this.subCategoryName, required this.subCategoryId});
+  Sub3Category(
+      {super.key, required this.subCategoryName, required this.subCategoryId});
 
   @override
   State<Sub3Category> createState() => _Sub3CategoryState();
@@ -27,7 +30,10 @@ class _Sub3CategoryState extends State<Sub3Category> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await Provider.of<Sub3CategoryModel>(context, listen: false).getSub3Category(widget.subCategoryId ?? "", context);
+      await Provider.of<Sub3CategoryModel>(context, listen: false)
+          .getSub3Category(widget.subCategoryId ?? "", context);
+      await Provider.of<Sub3CategoryModel>(context, listen: false)
+          .getProductsList(context, widget.subCategoryId ?? "");
     });
 
     super.initState();
@@ -43,8 +49,7 @@ class _Sub3CategoryState extends State<Sub3Category> {
             title: Text(widget.subCategoryName ?? ""),
           ),
           body: WillPopScope(
-
-            onWillPop: () async{
+            onWillPop: () async {
               sub3Category.makeListNull();
               return true;
             },
@@ -67,11 +72,14 @@ class _Sub3CategoryState extends State<Sub3Category> {
                     ),
                     GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 2 / 1),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, childAspectRatio: 2 / 1),
                       shrinkWrap: true,
                       itemCount: sub3Category.sub3CategoryList.length,
                       itemBuilder: (context, int index) {
-                        Sub3CategoryData subCate = sub3Category.sub3CategoryList[index];
+                        Sub3CategoryData subCate =
+                            sub3Category.sub3CategoryList[index];
 
                         return InkWell(
                           onTap: () {
@@ -88,7 +96,9 @@ class _Sub3CategoryState extends State<Sub3Category> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black7),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: AppColor.black7),
                               child: Padding(
                                 padding: const EdgeInsets.all(10),
                                 child: Row(
@@ -129,6 +139,156 @@ class _Sub3CategoryState extends State<Sub3Category> {
                           ),
                         );
                       },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "All Items :",
+                        style: AppFonts.semiBoldBlack,
+                      ),
+                    ),
+                    Container(
+                      color: AppColor.white,
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2, childAspectRatio: 2 / 3),
+                        itemCount: sub3Category.productsList.length,
+                        itemBuilder: (context, int index) {
+                          MainProductData? products =
+                              sub3Category.productsList[index];
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ProductsDetails(
+                                            pId: products.pId,
+                                            categoryId: products.categoryId,
+                                            categoryName: products.categoryName,
+                                            subCategoryId: products.subCategoryId,
+                                            subCategoryName: products.subCategoryName,
+                                            sub3CategoryId: products.sub3CategoryId,
+                                            sub3CategoryName: products.sub3CategoryName,
+                                            productName: products.productName,
+                                            productSp: products.productSp,
+                                            productMrp: products.productMrp,
+                                            pGst: products.pGst,
+                                            discount: products.discount,
+                                            productMoq: products.productMoq,
+                                            productsDic: products.productsDescr,
+                                            image1: products.image1,
+                                            image2: products.image2,
+                                            image3: products.image3,
+                                          )));
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    color: AppColor.black7),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        child: Stack(
+                                          children: [
+                                            Center(
+                                              child: SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    3,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    2,
+                                                child: Image.network(
+                                                  "https://drive.google.com/uc?id=${products.image1 ?? ""}",
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Align(
+                                                alignment: Alignment.topLeft,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: AppColor.mainColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25)),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      "${products.discount}% Off",
+                                                      style: AppFonts
+                                                          .semiBoldWhite12,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
+                                      Text(
+                                        products.sub3CategoryName ?? "",
+                                        style: AppFonts.regularBlack,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        products.productName ?? "",
+                                        style: AppFonts.semiBoldBlack,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "₹${products.productMrp ?? " "}",
+                                            style: AppFonts.mainPrice,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          const SizedBox(
+                                            width: 5,
+                                          ),
+                                          Text(
+                                            "₹${products.productSp ?? " "}",
+                                            style: AppFonts.mediumMainRed,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -142,17 +302,21 @@ class _Sub3CategoryState extends State<Sub3Category> {
 }
 
 class Sub3CategoryModel extends ChangeNotifier {
-
   List<Sub3CategoryData> sub3CategoryList = [];
+  List<MainProductData> productsList = [];
 
   getSub3Category(String subCategoryId, BuildContext context) async {
-    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
-    var url = "${AppConstant.GET_SUB3_CATEGORIES}${QueryParamsConstant.SUB_CATEGORY_ID}=$subCategoryId";
+    showDialog(
+        context: context,
+        builder: (context) => const LoadingDialog(),
+        barrierDismissible: false);
+    var url =
+        "${AppConstant.GET_SUB3_CATEGORIES}${QueryParamsConstant.SUB_CATEGORY_ID}=$subCategoryId&sub3CategoryId=0";
+
     var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       Navigator.pop(context);
       var jsonData = json.decode(response.body);
-
       if (jsonData["status"] ?? false) {
         var data = Sub3CategoryResponse.fromJson(jsonData);
         if (data.status ?? false) {
@@ -170,8 +334,35 @@ class Sub3CategoryModel extends ChangeNotifier {
     }
   }
 
-  makeListNull(){
+  getProductsList(BuildContext context, String subCategory) async {
+    showDialog(
+        context: context,
+        builder: (context) => const LoadingDialog(),
+        barrierDismissible: false);
+
+    var url =
+        "${AppConstant.GET_MAIN_PRODUCTS}${QueryParamsConstant.SUB_CATEGORY_ID}=$subCategory&sub3CategoryId=0";
+
+    var response = await http.get(Uri.parse(url));
+    if (response.statusCode == 200) {
+      Navigator.pop(context);
+      var jsonData = json.decode(response.body);
+      if (jsonData["status"] ?? false) {
+        var finalData = MainProductsResponse.fromJson(jsonData);
+        productsList = finalData.mainProducts ?? [];
+        notifyListeners();
+      } else {
+        makeListNull();
+      }
+    } else {
+      Navigator.pop(context);
+      makeListNull();
+    }
+  }
+
+  makeListNull() {
     sub3CategoryList = [];
+    productsList = [];
     notifyListeners();
   }
 }
