@@ -1,6 +1,4 @@
 // ignore_for_file: must_be_immutable
-
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -98,7 +96,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                               (e) => Container(
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: NetworkImage("https://drive.google.com/uc?id=${e ?? ""}"),
+                                    image: NetworkImage("https://drive.google.com/uc?id=$e"),
                                     fit: BoxFit.fill,
                                   ),
                                 ),
