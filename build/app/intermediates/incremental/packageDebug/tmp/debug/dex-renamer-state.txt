@@ -1,1 +1,4 @@
-#Fri Apr 07 17:08:01 IST 2023
+#Sat Apr 08 16:10:35 IST 2023
+base.0=C\:\\Users\\Nikesh\\AndroidStudioProjects\\rudrashopapp\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

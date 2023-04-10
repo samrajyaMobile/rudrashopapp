@@ -34,10 +34,13 @@ class _HomeState extends State<Home> {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) async {
         await Provider.of<HomeModel>(context, listen: false).getSlider(context);
-        await Provider.of<HomeModel>(context, listen: false).getCategories(context);
+        await Provider.of<HomeModel>(context, listen: false)
+            .getCategories(context);
         await Provider.of<HomeModel>(context, listen: false).getDeal(context);
-        await Provider.of<HomeModel>(context, listen: false).getNewArrivals(context);
-        await Provider.of<HomeModel>(context, listen: false).getClearance(context);
+        await Provider.of<HomeModel>(context, listen: false)
+            .getNewArrivals(context);
+        await Provider.of<HomeModel>(context, listen: false)
+            .getClearance(context);
       },
     );
     super.initState();
@@ -66,50 +69,103 @@ class _HomeState extends State<Home> {
                                       padding: const EdgeInsets.all(8.0),
                                       child: InkWell(
                                         onTap: () {
-                                          if (e.navigationPage?.toLowerCase() == "products" || e.navigationPage?.toLowerCase() == "product") {
+                                          if (e.navigationPage?.toLowerCase() ==
+                                                  "products" ||
+                                              e.navigationPage?.toLowerCase() ==
+                                                  "product") {
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (context) => ProductsDetails(
+                                                    builder: (context) =>
+                                                        ProductsDetails(
                                                           pId: e.pId,
-                                                          categoryId: e.categoryId,
-                                                          categoryName: e.categoryName,
-                                                          subCategoryId: e.subCategoryId,
-                                                          subCategoryName: e.subCategoryName,
-                                                          sub3CategoryId: e.sub3CategoryId,
-                                                          sub3CategoryName: e.sub3CategoryName,
-                                                          productName: e.productName,
-                                                          productSp: e.productSp,
+                                                          categoryId:
+                                                              e.categoryId,
+                                                          categoryName:
+                                                              e.categoryName,
+                                                          subCategoryId:
+                                                              e.subCategoryId,
+                                                          subCategoryName:
+                                                              e.subCategoryName,
+                                                          sub3CategoryId:
+                                                              e.sub3CategoryId,
+                                                          sub3CategoryName: e
+                                                              .sub3CategoryName,
+                                                          productName:
+                                                              e.productName,
+                                                          productSp:
+                                                              e.productSp,
                                                           pGst: e.pGst,
                                                           discount: e.discount,
-                                                          productMoq: e.productMoq,
-                                                          productsDic: e.productsDic,
+                                                          productMoq:
+                                                              e.productMoq,
+                                                          productsDic:
+                                                              e.productsDic,
                                                           image1: e.image1,
                                                           image2: e.image2,
-                                                          image3: e.image3, productMrp: e.productMrp,
+                                                          image3: e.image3,
+                                                          productMrp:
+                                                              e.productMrp,
                                                         )));
-                                          } else if (e.navigationPage?.toLowerCase() == "deal") {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) => const DealProducts()));
-                                          } else if (e.navigationPage?.toLowerCase() == "newproducts" || e.navigationPage?.toLowerCase() == "newproducts") {
-                                            Navigator.push(context, MaterialPageRoute(builder: (context) => const NewArrivalsProducts()));
-                                          } else if (e.navigationPage?.toLowerCase() == "clearance") {
-                                          } else if (e.navigationPage?.toLowerCase() == "subcategory" || e.navigationPage?.toLowerCase() == "subcategories") {
+                                          } else if (e.navigationPage
+                                                  ?.toLowerCase() ==
+                                              "deal") {
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (context) => SubCategoryScreen(categoryName: e.categoryName, categoryId: e.categoryId)));
-                                          } else if (e.navigationPage?.toLowerCase() == "sub3category" || e.navigationPage?.toLowerCase() == "sub3categories") {
+                                                    builder: (context) =>
+                                                        const DealProducts()));
+                                          } else if (e.navigationPage
+                                                      ?.toLowerCase() ==
+                                                  "newproducts" ||
+                                              e.navigationPage?.toLowerCase() ==
+                                                  "newproducts") {
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                    builder: (context) => Sub3Category(subCategoryName: e.subCategoryName, subCategoryId: e.subCategoryId)));
+                                                    builder: (context) =>
+                                                        const NewArrivalsProducts()));
+                                          } else if (e.navigationPage
+                                                  ?.toLowerCase() ==
+                                              "clearance") {
+                                          } else if (e.navigationPage
+                                                      ?.toLowerCase() ==
+                                                  "subcategory" ||
+                                              e.navigationPage?.toLowerCase() ==
+                                                  "subcategories") {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        SubCategoryScreen(
+                                                            categoryName:
+                                                                e.categoryName,
+                                                            categoryId:
+                                                                e.categoryId)));
+                                          } else if (e.navigationPage
+                                                      ?.toLowerCase() ==
+                                                  "sub3category" ||
+                                              e.navigationPage?.toLowerCase() ==
+                                                  "sub3categories") {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Sub3Category(
+                                                            subCategoryName: e
+                                                                .subCategoryName,
+                                                            subCategoryId: e
+                                                                .subCategoryId)));
                                           }
                                         },
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(5),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
                                             image: DecorationImage(
-                                                image: NetworkImage("https://drive.google.com/uc?export=view&id=${e.sliderImages ?? ""}"), fit: BoxFit.fill),
+                                                image: NetworkImage(
+                                                    "https://drive.google.com/uc?export=view&id=${e.sliderImages ?? ""}"),
+                                                fit: BoxFit.fill),
                                           ),
                                         ),
                                       ),
@@ -134,15 +190,20 @@ class _HomeState extends State<Home> {
                             scrollDirection: Axis.horizontal,
                             itemCount: home.categoryList?.length,
                             itemBuilder: (context, int index) {
-                              CategoryData? category = home.categoryList?[index];
+                              CategoryData? category =
+                                  home.categoryList?[index];
                               return InkWell(
                                 onTap: () {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => SubCategoryScreen(
-                                                categoryName: category?.categoryName ?? "",
-                                                categoryId: category?.categoryId ?? "",
+                                          builder: (context) =>
+                                              SubCategoryScreen(
+                                                categoryName:
+                                                    category?.categoryName ??
+                                                        "",
+                                                categoryId:
+                                                    category?.categoryId ?? "",
                                               )));
                                 },
                                 child: Padding(
@@ -162,7 +223,9 @@ class _HomeState extends State<Home> {
                                       ),
                                       Text(
                                         category?.categoryName ?? "",
-                                        style: TextStyle(color: AppColor.black1, fontSize: 12),
+                                        style: TextStyle(
+                                            color: AppColor.black1,
+                                            fontSize: 12),
                                       )
                                     ],
                                   ),
@@ -188,11 +251,15 @@ class _HomeState extends State<Home> {
                           children: [
                             SvgPicture.asset(
                               "assets/images/dealoftheday.svg",
-                              width: MediaQuery.of(context).size.width / 2,
+                              width: MediaQuery.of(context).size.width / 2.5,
                             ),
                             InkWell(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const DealProducts()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const DealProducts()));
                               },
                               child: Row(
                                 children: [
@@ -215,87 +282,87 @@ class _HomeState extends State<Home> {
                             scrollDirection: Axis.horizontal,
                             shrinkWrap: true,
                             physics: const BouncingScrollPhysics(),
-                            itemCount: (home.dealProductsList?.isNotEmpty ?? false) ? 5 : 0,
+                            itemCount:
+                                (home.dealProductsList?.isNotEmpty ?? false)
+                                    ? 5
+                                    : 0,
                             itemBuilder: (context, int index) {
-                              DealProductData? products = home.dealProductsList?[index];
+                              DealProductData? products =
+                                  home.dealProductsList?[index];
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                  width: MediaQuery.of(context).size.width / 2.5,
-                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: AppColor.black7),
+                                  width: MediaQuery.of(context).size.width / 3,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5)),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Expanded(
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context).size.width / 4,
-                                            height: MediaQuery.of(context).size.width / 3,
-                                            child: Image.network(
-                                              "https://www.pngkit.com/png/full/283-2833454_transparent-mobile-accessories-png.png",
-                                            ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                BorderRadius.circular(5),
+                                                border: Border.all(
+                                                    color: AppColor.black5),
+                                                image: DecorationImage(
+                                                    image: NetworkImage(
+                                                        "https://drive.google.com/uc?id=${products?.image1 ?? ""}"))),
                                           ),
                                         ),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  products?.categoryName ?? "",
-                                                  style: AppFonts.regularBlack,
-                                                  maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              ),
-                                              Text(
-                                                products?.productName ?? "",
-                                                style: AppFonts.semiBoldBlack,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                              Expanded(
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      "₹${products?.productMrp ?? ""}",
-                                                      style: AppFonts.mainPrice,
-                                                      maxLines: 2,
-                                                      overflow: TextOverflow.ellipsis,
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    Container(
-                                                      decoration: BoxDecoration(color: AppColor.mainColor, borderRadius: BorderRadius.circular(25)),
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(4.0),
-                                                        child: Text(
-                                                          "-${products?.discount ?? ""}%",
-                                                          style: AppFonts.semiBoldWhite12,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Text(
+                                        Column(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                          children: [
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              products?.subCategoryName ?? "",
+                                              style: AppFonts.regularBlack,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Text(
+                                              products?.productName ?? "",
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
                                                   "₹${products?.productSp ?? ""}",
                                                   style: AppFonts.mediumMainRed,
                                                   maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                  TextOverflow.ellipsis,
                                                 ),
-                                              ),
-                                            ],
-                                          ),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                      color: AppColor.mainColor,
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          25)),
+                                                  child: Padding(
+                                                    padding:
+                                                    const EdgeInsets.all(
+                                                        4.0),
+                                                    child: Text(
+                                                      "${products?.discount ?? ""}% Off",
+                                                      style: AppFonts
+                                                          .semiBoldWhite12,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
@@ -328,7 +395,11 @@ class _HomeState extends State<Home> {
                             ),
                             InkWell(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const NewArrivalsProducts()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const NewArrivalsProducts()));
                               },
                               child: Row(
                                 children: [
@@ -351,87 +422,89 @@ class _HomeState extends State<Home> {
                             scrollDirection: Axis.horizontal,
                             shrinkWrap: true,
                             physics: const BouncingScrollPhysics(),
-                            itemCount: (home.newArrivalProductsList?.isNotEmpty ?? false) ? 5 : 0,
+                            itemCount:
+                                (home.newArrivalProductsList?.isNotEmpty ??
+                                        false)
+                                    ? 5
+                                    : 0,
                             itemBuilder: (context, int index) {
-                              NewArrivalProductData? products = home.newArrivalProductsList?[index];
+                              NewArrivalProductData? products =
+                                  home.newArrivalProductsList?[index];
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width / 3,
-                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: AppColor.black7),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                  ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Expanded(
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context).size.width / 4,
-                                            height: MediaQuery.of(context).size.width / 3,
-                                            child: Image.network(
-                                              "https://www.pngkit.com/png/full/283-2833454_transparent-mobile-accessories-png.png",
-                                            ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                border: Border.all(
+                                                    color: AppColor.black5),
+                                                image: DecorationImage(
+                                                    image: NetworkImage(
+                                                        "https://drive.google.com/uc?id=${products?.image1 ?? ""}"))),
                                           ),
                                         ),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  products?.categoryName ?? "",
-                                                  style: AppFonts.regularBlack,
-                                                  maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              ),
-                                              Text(
-                                                products?.productName ?? "",
-                                                style: AppFonts.semiBoldBlack,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                              Expanded(
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      "₹${products?.productMrp ?? ""}",
-                                                      style: AppFonts.mainPrice,
-                                                      maxLines: 2,
-                                                      overflow: TextOverflow.ellipsis,
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    Container(
-                                                      decoration: BoxDecoration(color: AppColor.mainColor, borderRadius: BorderRadius.circular(25)),
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(4.0),
-                                                        child: Text(
-                                                          "-${products?.discount ?? ""}%",
-                                                          style: AppFonts.semiBoldWhite12,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Text(
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              products?.subCategoryName ?? "",
+                                              style: AppFonts.regularBlack,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Text(
+                                              products?.productName ?? "",
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
                                                   "₹${products?.productSp ?? ""}",
                                                   style: AppFonts.mediumMainRed,
                                                   maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                 ),
-                                              ),
-                                            ],
-                                          ),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                      color: AppColor.mainColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25)),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            4.0),
+                                                    child: Text(
+                                                      "${products?.discount ?? ""}% Off",
+                                                      style: AppFonts
+                                                          .semiBoldWhite12,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
@@ -464,7 +537,11 @@ class _HomeState extends State<Home> {
                             ),
                             InkWell(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => const NewArrivalsProducts()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const NewArrivalsProducts()));
                               },
                               child: Row(
                                 children: [
@@ -487,87 +564,88 @@ class _HomeState extends State<Home> {
                             scrollDirection: Axis.horizontal,
                             shrinkWrap: true,
                             physics: const BouncingScrollPhysics(),
-                            itemCount: (home.clearanceProductsList?.isNotEmpty ?? false) ? 5 : 0,
+                            itemCount:
+                                (home.clearanceProductsList?.isNotEmpty ??
+                                        false)
+                                    ? 5
+                                    : 0,
                             itemBuilder: (context, int index) {
-                              ClearanceProductData? products = home.clearanceProductsList?[index];
+                              ClearanceProductData? products =
+                                  home.clearanceProductsList?[index];
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
                                   width: MediaQuery.of(context).size.width / 3,
-                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: AppColor.black7),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5)),
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Expanded(
-                                          child: SizedBox(
-                                            width: MediaQuery.of(context).size.width / 4,
-                                            height: MediaQuery.of(context).size.width / 3,
-                                            child: Image.network(
-                                              "https://www.pngkit.com/png/full/283-2833454_transparent-mobile-accessories-png.png",
-                                            ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
+                                                border: Border.all(
+                                                    color: AppColor.black5),
+                                                image: DecorationImage(
+                                                    image: NetworkImage(
+                                                        "https://drive.google.com/uc?id=${products?.image1 ?? ""}"))),
                                           ),
                                         ),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              Expanded(
-                                                child: Text(
-                                                  products?.categoryName ?? "",
-                                                  style: AppFonts.regularBlack,
-                                                  maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
-                                                ),
-                                              ),
-                                              Text(
-                                                products?.productName ?? "",
-                                                style: AppFonts.semiBoldBlack,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                              Expanded(
-                                                child: Row(
-                                                  children: [
-                                                    Text(
-                                                      "₹${products?.productMrp ?? ""}",
-                                                      style: AppFonts.mainPrice,
-                                                      maxLines: 2,
-                                                      overflow: TextOverflow.ellipsis,
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                    Container(
-                                                      decoration: BoxDecoration(color: AppColor.mainColor, borderRadius: BorderRadius.circular(25)),
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(4.0),
-                                                        child: Text(
-                                                          "-${products?.discount ?? ""}%",
-                                                          style: AppFonts.semiBoldWhite12,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const SizedBox(
-                                                      width: 5,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Text(
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              products?.subCategoryName ?? "",
+                                              style: AppFonts.regularBlack,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Text(
+                                              products?.productName ?? "",
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
                                                   "₹${products?.productSp ?? ""}",
                                                   style: AppFonts.mediumMainRed,
                                                   maxLines: 2,
-                                                  overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                 ),
-                                              ),
-                                            ],
-                                          ),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                      color: AppColor.mainColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25)),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            4.0),
+                                                    child: Text(
+                                                      "${products?.discount ?? ""}% Off",
+                                                      style: AppFonts
+                                                          .semiBoldWhite12,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
@@ -589,7 +667,8 @@ class _HomeState extends State<Home> {
                   child: GridView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                     ),
                     itemCount: 50,
@@ -598,7 +677,9 @@ class _HomeState extends State<Home> {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: AppColor.black7),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(5),
+                              color: AppColor.black7),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -609,8 +690,14 @@ class _HomeState extends State<Home> {
                                     children: [
                                       Center(
                                         child: SizedBox(
-                                          width: MediaQuery.of(context).size.width / 3,
-                                          height: MediaQuery.of(context).size.width / 2,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              2,
                                           child: Image.network(
                                             "https://www.pngkit.com/png/full/283-2833454_transparent-mobile-accessories-png.png",
                                           ),
@@ -621,9 +708,13 @@ class _HomeState extends State<Home> {
                                         child: Align(
                                           alignment: Alignment.topLeft,
                                           child: Container(
-                                            decoration: BoxDecoration(color: AppColor.mainColor, borderRadius: BorderRadius.circular(25)),
+                                            decoration: BoxDecoration(
+                                                color: AppColor.mainColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(25)),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                 "-20%",
                                                 style: AppFonts.semiBoldWhite,
@@ -703,7 +794,10 @@ class HomeModel extends ChangeNotifier {
   final CarouselController carouselController = CarouselController();
 
   getSlider(BuildContext context) async {
-    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
+    showDialog(
+        context: context,
+        builder: (context) => const LoadingDialog(),
+        barrierDismissible: false);
     var response = await http.get(Uri.parse(AppConstant.GET_SLIDERS));
     if (response.statusCode == 200) {
       Navigator.pop(context);
@@ -719,7 +813,10 @@ class HomeModel extends ChangeNotifier {
   }
 
   getCategories(BuildContext context) async {
-    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
+    showDialog(
+        context: context,
+        builder: (context) => const LoadingDialog(),
+        barrierDismissible: false);
 
     var response = await http.get(Uri.parse(AppConstant.GET_CATEGORIES));
 
@@ -742,7 +839,10 @@ class HomeModel extends ChangeNotifier {
   }
 
   getDeal(BuildContext context) async {
-    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
+    showDialog(
+        context: context,
+        builder: (context) => const LoadingDialog(),
+        barrierDismissible: false);
     var response = await http.get(Uri.parse(AppConstant.GET_DEAL_OF_THE_DAY));
     if (response.statusCode == 200) {
       Navigator.pop(context);
@@ -763,7 +863,10 @@ class HomeModel extends ChangeNotifier {
   }
 
   getNewArrivals(BuildContext context) async {
-    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
+    showDialog(
+        context: context,
+        builder: (context) => const LoadingDialog(),
+        barrierDismissible: false);
     var response = await http.get(Uri.parse(AppConstant.GET_NEW_ARRIVALS));
     if (response.statusCode == 200) {
       Navigator.pop(context);
@@ -784,7 +887,10 @@ class HomeModel extends ChangeNotifier {
   }
 
   getClearance(BuildContext context) async {
-    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
+    showDialog(
+        context: context,
+        builder: (context) => const LoadingDialog(),
+        barrierDismissible: false);
     var response = await http.get(Uri.parse(AppConstant.GET_CLEARANCE));
     if (response.statusCode == 200) {
       Navigator.pop(context);
