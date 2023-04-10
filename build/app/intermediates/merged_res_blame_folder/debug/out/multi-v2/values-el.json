@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.rudrashopapp-mergeDebugResources-12:/values-el/values-el.xml",
+            "outputFile": "com.example.rudrashopapp-mergeDebugResources-14:/values-el/values-el.xml",
             "map": [
                 {
                     "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\3794f8805813d716e1232c1d56f0ad65\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-el\\values.xml",

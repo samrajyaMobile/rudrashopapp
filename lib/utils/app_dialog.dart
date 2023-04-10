@@ -15,13 +15,18 @@ class LoadingDialog extends StatefulWidget {
 class _LoadingDialogState extends State<LoadingDialog> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(25),
-        child: LottieBuilder.asset(
-          "assets/images/loading.json",
-          height: 200,
-          width: 200,
+    return WillPopScope(
+      onWillPop: () async{
+        return false;
+      },
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(25),
+          child: LottieBuilder.asset(
+            "assets/images/loading.json",
+            height: 200,
+            width: 200,
+          ),
         ),
       ),
     );

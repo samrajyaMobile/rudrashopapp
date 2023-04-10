@@ -1,6 +1,8 @@
 -- Merging decision tree log ---
 application
 INJECTED from D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:3:4-33:19
+MERGED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-24:19
+MERGED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:13:5-24:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:22:5-38:19
@@ -28,12 +30,14 @@ INJECTED from D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:1:1-34:12
 INJECTED from D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:1:1-34:12
 MERGED from D:\rudrashopapp\android\app\src\main\AndroidManifest.xml:1:1-34:12
 MERGED from [:shared_preferences_android] D:\rudrashopapp\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-26:12
 MERGED from [:sqflite] D:\rudrashopapp\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:fluttertoast] D:\rudrashopapp\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:path_provider_android] D:\rudrashopapp\build\path_provider_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:google_sign_in_android] D:\rudrashopapp\build\google_sign_in_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\5f7f04b14475a5177c81c0aebd35a1c0\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\823186cc585c710d40c556c773606585\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] C:\Users\w3nuts\.gradle\caches\transforms-3\6e8be5437103fc52051cd5aed68a6705\transformed\jetified-play-services-auth-api-phone-18.0.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] C:\Users\w3nuts\.gradle\caches\transforms-3\422661144879657de7e4cd91c7e0d371\transformed\jetified-play-services-auth-base-18.0.4\AndroidManifest.xml:2:1-7:12
@@ -42,10 +46,18 @@ MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\w3nuts\.
 MERGED from [com.google.android.gms:play-services-tasks:18.0.1] C:\Users\w3nuts\.gradle\caches\transforms-3\f17f9b529a7dd6757cd3287e6c99c868\transformed\jetified-play-services-tasks-18.0.1\AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\3794f8805813d716e1232c1d56f0ad65\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\2ddbba42a0dd0bf04473d8d494e24320\transformed\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media:media:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\5f25e7fca1a854c8888aaeb54eb344b4\transformed\media-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\b382ca866419d57e8c4e17a1987a3349\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\82e9a3bc989f5be913b0f4aecde59b10\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\d401f0afd25f69cdbc6461146521fe05\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\ee2b9ab1f1c40582c045cd909c640590\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\89f3b3441f1a1a1cf56c77ac9d6fa98b\transformed\jetified-activity-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\7387bcffcf08fcaae7475e275df45bd5\transformed\coordinatorlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\06be450459b46321496021199dd5ad57\transformed\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\726f9b61912c3fdf5049cfab78f611e1\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\53c684651fc0a1d0d023d20a1835d031\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\6ac1540d9a44415f638de82c0c6dd648\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\abd3860caa4a32d2242a74c6c9cc6f26\transformed\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.6.0] C:\Users\w3nuts\.gradle\caches\transforms-3\9d13f608411ebd1b864ae55bb53a8fcc\transformed\core-1.6.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\w3nuts\.gradle\caches\transforms-3\962643bb704590b46ebfc3384668d6bd\transformed\lifecycle-runtime-2.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\944013994b60a4a6acf22e9d08fad3f4\transformed\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
@@ -54,6 +66,11 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\w3nuts\.
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\9be0c9b54cbfdf64fd75e017909965b4\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\932c75342b4e28dc8fb132a2bedbbc21\transformed\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\w3nuts\.gradle\caches\transforms-3\42eac6b9d57bafd2f3ce2b9ae42613bd\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\f76d35f365d1814bad478409c2679545\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\655be432ca65ae606b3fee2f1a25d89c\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\1faf8f83bfe35511f41619a41f736d83\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\fbbb5f87ccc60943a50278ed5357805b\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\d051f688b983c2a4e23be15260087246\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\dd2b3482efc682ad9688d30577c47198\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\eaa9ca6d8aeab4c8cbd4c273a15e4d4e\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
 INJECTED from D:\rudrashopapp\android\app\src\debug\AndroidManifest.xml:1:1-8:12
@@ -79,6 +96,8 @@ INJECTED from D:\rudrashopapp\android\app\src\main\AndroidManifest.xml
 INJECTED from D:\rudrashopapp\android\app\src\main\AndroidManifest.xml
 MERGED from [:shared_preferences_android] D:\rudrashopapp\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:shared_preferences_android] D:\rudrashopapp\build\shared_preferences_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
+MERGED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:6:5-8:41
 MERGED from [:sqflite] D:\rudrashopapp\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:sqflite] D:\rudrashopapp\build\sqflite\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:fluttertoast] D:\rudrashopapp\build\fluttertoast\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
@@ -91,6 +110,8 @@ MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\w3nuts\.gradle\c
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\5f7f04b14475a5177c81c0aebd35a1c0\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\823186cc585c710d40c556c773606585\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\823186cc585c710d40c556c773606585\transformed\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth:20.4.1] C:\Users\w3nuts\.gradle\caches\transforms-3\68e685146462835443dc57aea9b8b87a\transformed\jetified-play-services-auth-20.4.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] C:\Users\w3nuts\.gradle\caches\transforms-3\6e8be5437103fc52051cd5aed68a6705\transformed\jetified-play-services-auth-api-phone-18.0.1\AndroidManifest.xml:5:5-44
@@ -107,14 +128,30 @@ MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\w3nu
 MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\3794f8805813d716e1232c1d56f0ad65\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:18:5-43
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\2ddbba42a0dd0bf04473d8d494e24320\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\2ddbba42a0dd0bf04473d8d494e24320\transformed\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\5f25e7fca1a854c8888aaeb54eb344b4\transformed\media-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\5f25e7fca1a854c8888aaeb54eb344b4\transformed\media-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\b382ca866419d57e8c4e17a1987a3349\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\b382ca866419d57e8c4e17a1987a3349\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\82e9a3bc989f5be913b0f4aecde59b10\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\82e9a3bc989f5be913b0f4aecde59b10\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\d401f0afd25f69cdbc6461146521fe05\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\d401f0afd25f69cdbc6461146521fe05\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\ee2b9ab1f1c40582c045cd909c640590\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\ee2b9ab1f1c40582c045cd909c640590\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\89f3b3441f1a1a1cf56c77ac9d6fa98b\transformed\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\89f3b3441f1a1a1cf56c77ac9d6fa98b\transformed\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\7387bcffcf08fcaae7475e275df45bd5\transformed\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\7387bcffcf08fcaae7475e275df45bd5\transformed\coordinatorlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\06be450459b46321496021199dd5ad57\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\06be450459b46321496021199dd5ad57\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\726f9b61912c3fdf5049cfab78f611e1\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\726f9b61912c3fdf5049cfab78f611e1\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\53c684651fc0a1d0d023d20a1835d031\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\53c684651fc0a1d0d023d20a1835d031\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\6ac1540d9a44415f638de82c0c6dd648\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\6ac1540d9a44415f638de82c0c6dd648\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\abd3860caa4a32d2242a74c6c9cc6f26\transformed\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\abd3860caa4a32d2242a74c6c9cc6f26\transformed\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.6.0] C:\Users\w3nuts\.gradle\caches\transforms-3\9d13f608411ebd1b864ae55bb53a8fcc\transformed\core-1.6.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.6.0] C:\Users\w3nuts\.gradle\caches\transforms-3\9d13f608411ebd1b864ae55bb53a8fcc\transformed\core-1.6.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] C:\Users\w3nuts\.gradle\caches\transforms-3\962643bb704590b46ebfc3384668d6bd\transformed\lifecycle-runtime-2.2.0\AndroidManifest.xml:20:5-22:41
@@ -131,6 +168,16 @@ MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\w3nuts\.gradle\cach
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\932c75342b4e28dc8fb132a2bedbbc21\transformed\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\w3nuts\.gradle\caches\transforms-3\42eac6b9d57bafd2f3ce2b9ae42613bd\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\w3nuts\.gradle\caches\transforms-3\42eac6b9d57bafd2f3ce2b9ae42613bd\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\f76d35f365d1814bad478409c2679545\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\f76d35f365d1814bad478409c2679545\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\655be432ca65ae606b3fee2f1a25d89c\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\655be432ca65ae606b3fee2f1a25d89c\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\1faf8f83bfe35511f41619a41f736d83\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\1faf8f83bfe35511f41619a41f736d83\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\fbbb5f87ccc60943a50278ed5357805b\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\fbbb5f87ccc60943a50278ed5357805b\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\d051f688b983c2a4e23be15260087246\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\w3nuts\.gradle\caches\transforms-3\d051f688b983c2a4e23be15260087246\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\dd2b3482efc682ad9688d30577c47198\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\dd2b3482efc682ad9688d30577c47198\transformed\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\w3nuts\.gradle\caches\transforms-3\eaa9ca6d8aeab4c8cbd4c273a15e4d4e\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -149,6 +196,32 @@ MERGED from [:google_sign_in_android] D:\rudrashopapp\build\google_sign_in_andro
 MERGED from [:google_sign_in_android] D:\rudrashopapp\build\google_sign_in_android\intermediates\merged_manifest\debug\AndroidManifest.xml:9:5-67
 	android:name
 		ADDED from D:\rudrashopapp\android\app\src\debug\AndroidManifest.xml:7:22-64
+uses-permission#android.permission.REQUEST_INSTALL_PACKAGES
+ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-83
+	android:name
+		ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-80
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-80
+	android:name
+		ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:11:22-77
+provider#androidx.core.content.FileProvider
+ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:14:9-23:20
+	android:grantUriPermissions
+		ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-47
+	android:authorities
+		ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-64
+	android:exported
+		ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-37
+	tools:replace
+		ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-48
+	android:name
+		ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-22:53
+	android:resource
+		ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:22:17-50
+	android:name
+		ADDED from [:open_file] D:\rudrashopapp\build\open_file\intermediates\merged_manifest\debug\AndroidManifest.xml:21:17-67
 uses-library#androidx.window.extensions
 ADDED from [androidx.window:window:1.0.0-beta04] C:\Users\w3nuts\.gradle\caches\transforms-3\30c9f9e36f76ec2d5a473df3d33e33ff\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
 	android:required

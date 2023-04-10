@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.rudrashopapp-mergeDebugResources-12:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.example.rudrashopapp-mergeDebugResources-14:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\68e685146462835443dc57aea9b8b87a\\transformed\\jetified-play-services-auth-20.4.1\\res\\values-watch-v20\\values.xml",

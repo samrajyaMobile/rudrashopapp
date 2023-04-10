@@ -20,16 +20,16 @@ class LoginResponse {
   List<User>? user;
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
-    status: json["status"],
-    message: json["message"],
-    user: List<User>.from(json["user"].map((x) => User.fromJson(x))),
-  );
+        status: json["status"],
+        message: json["message"],
+        user: List<User>.from(json["user"].map((x) => User.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-    "user": List<dynamic>.from(user?.map((x) => x.toJson()) ?? []),
-  };
+        "status": status,
+        "message": message,
+        "user": List<dynamic>.from(user?.map((x) => x.toJson()) ?? []),
+      };
 }
 
 class User {
@@ -54,24 +54,24 @@ class User {
   int? uPincode;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-    uEmail: json["u_email"],
-    uName: json["u_name"],
-    uSurname: json["u_surname"],
-    uMoNumber: json["u_mo_number"],
-    uBusinessName: json["u_business_name"],
-    uAddress: json["u_address"],
-    uCity: json["u_city"],
-    uPincode: json["u_pincode"],
-  );
+        uEmail: json["u_email"],
+        uName: json["u_name"],
+        uSurname: json["u_surname"],
+        uMoNumber: json["u_mo_number"],
+        uBusinessName: json["u_business_name"],
+        uAddress: json["u_address"],
+        uCity: json["u_city"],
+        uPincode: json["u_pincode"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "u_email": uEmail,
-    "u_name": uName,
-    "u_surname": uSurname,
-    "u_mo_number": uMoNumber,
-    "u_business_name": uBusinessName,
-    "u_address": uAddress,
-    "u_city": uCity,
-    "u_pincode": uPincode,
-  };
+        "u_email": uEmail,
+        "u_name": uName,
+        "u_surname": uSurname,
+        "u_mo_number": uMoNumber,
+        "u_business_name": uBusinessName,
+        "u_address": uAddress,
+        "u_city": uCity,
+        "u_pincode": uPincode,
+      };
 }

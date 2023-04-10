@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.rudrashopapp-mergeDebugResources-12:/values-de/values-de.xml",
+            "outputFile": "com.example.rudrashopapp-mergeDebugResources-14:/values-de/values-de.xml",
             "map": [
                 {
                     "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\9d13f608411ebd1b864ae55bb53a8fcc\\transformed\\core-1.6.0\\res\\values-de\\values-de.xml",

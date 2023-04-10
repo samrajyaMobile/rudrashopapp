@@ -26,6 +26,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "barcode",
+      "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/barcode-2.2.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "bidi",
+      "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/bidi-2.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -218,6 +230,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "image",
+      "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/image-4.0.15",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "js",
       "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.5",
       "packageUri": "lib/",
@@ -264,6 +282,12 @@
       "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/octo_image-1.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "open_file",
+      "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/open_file-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.0"
     },
     {
       "name": "path",
@@ -314,6 +338,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "pdf",
+      "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/pdf-3.10.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "pedantic",
       "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/pedantic-1.11.1",
       "packageUri": "lib/",
@@ -354,6 +384,12 @@
       "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/provider-6.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "qr",
+      "rootUri": "file:///C:/Users/w3nuts/AppData/Local/Pub/Cache/hosted/pub.dev/qr-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
     },
     {
       "name": "quiver",
@@ -530,7 +566,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-04-10T05:41:50.990569Z",
+  "generated": "2023-04-25T10:54:11.420192Z",
   "generator": "pub",
   "generatorVersion": "2.19.6"
 }

@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rudrashop/pages/deal_products.dart';
@@ -7,9 +8,10 @@ import 'package:rudrashop/pages/login_screen.dart';
 import 'package:rudrashop/pages/main_products_list.dart';
 import 'package:rudrashop/pages/new_arrivals_products.dart';
 import 'package:rudrashop/pages/products_details.dart';
-import 'package:rudrashop/pages/signup.dart';
 import 'package:rudrashop/pages/sub3_category.dart';
 import 'package:rudrashop/pages/sub_categoty.dart';
+import 'package:rudrashop/utils/app_constant.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +34,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProductsDetailsModel()),
         ChangeNotifierProvider(create: (context) => NewArrivalsProductsModel()),
         ChangeNotifierProvider(create: (context) => DealProductsModel()),
-
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -40,7 +41,56 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const LoginScreen(),
+        home: const SplashScreen(),
+      ),
+    );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  bool signedIn = false;
+
+  @override
+  void initState() {
+    navigation();
+    super.initState();
+  }
+
+  navigation() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    signedIn = sharedPreferences.getBool(SharedPrefConstant.U_LOGIN) ?? false;
+
+    if (signedIn) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const Dashboard(),
+        ),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const LoginScreen(),
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: const [],
+        ),
       ),
     );
   }

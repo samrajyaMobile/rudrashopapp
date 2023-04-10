@@ -1,18 +1,18 @@
 // ignore_for_file: must_be_immutable, use_build_context_synchronously
 
 import 'dart:convert';
-import 'dart:ffi';
-
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rudrashop/http/model/add_to_cart_model.dart';
 import 'package:rudrashop/http/model/variant_products_response.dart';
+import 'package:rudrashop/pages/cart.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:rudrashop/utils/app_constant.dart';
 import 'package:rudrashop/utils/app_dialog.dart';
 import 'package:rudrashop/utils/app_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProductsDetails extends StatefulWidget {
   String? pId;
@@ -63,11 +63,8 @@ class _ProductsDetailsState extends State<ProductsDetails> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) async {
-        await Provider.of<ProductsDetailsModel>(context, listen: false)
-            .setImageInSlider(
-                widget.image1 ?? "", widget.image2 ?? "", widget.image3 ?? "");
-        await Provider.of<ProductsDetailsModel>(context, listen: false)
-            .getVariantProducts(widget.pId ?? "", context);
+        await Provider.of<ProductsDetailsModel>(context, listen: false).setImageInSlider(widget.image1 ?? "", widget.image2 ?? "", widget.image3 ?? "");
+        await Provider.of<ProductsDetailsModel>(context, listen: false).getVariantProducts(widget.pId ?? "", context);
       },
     );
 
@@ -77,242 +74,315 @@ class _ProductsDetailsState extends State<ProductsDetails> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColor.black7,
-        appBar: AppBar(
-          title: const Text("Back"),
-          backgroundColor: AppColor.mainColor,
-        ),
-        body: Consumer<ProductsDetailsModel>(builder: (context, products, _) {
-          return WillPopScope(
-            onWillPop: () async {
-              products.setListNull();
-              return true;
-            },
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
+      child: Consumer<ProductsDetailsModel>(
+        builder: (context, products, _) {
+          return Scaffold(
+            backgroundColor: AppColor.black7,
+            appBar: AppBar(
+              title: const Text("Back"),
+              backgroundColor: AppColor.mainColor,
+              actions: [
+                IconButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const Cart()));
+                }, icon: const Icon(Icons.shopping_cart))
+              ],
+            ),
+
+            body: WillPopScope(
+              onWillPop: () async {
+                products.setListNull();
+                return true;
+              },
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  (products.imageList?.isNotEmpty ?? false)
-                      ? CarouselSlider(
-                          items: products.imageList
-                              ?.map(
-                                (e) => Container(
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                          "https://drive.google.com/uc?id=${e ?? ""}"),
-                                    ),
-                                  ),
-                                ),
-                              )
-                              .toList(),
-                          carouselController: products.carouselController,
-                          options: CarouselOptions(
-                            scrollPhysics: const BouncingScrollPhysics(),
-                            autoPlay: true,
-                            aspectRatio: 1,
-                            viewportFraction: 1,
-                          ),
-                        )
-                      : Container(),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    color: AppColor.black2,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text(
-                        "Add minimum ${widget.productMoq} pcs to purchase",
-                        style: AppFonts.semiBoldWhite,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    color: AppColor.white,
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            widget.productName ?? "",
-                            style: AppFonts.semiBoldBlack,
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                            "Product Description : ",
-                            style: AppFonts.textFieldLabelGary,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          products.readMore
-                              ? Text(
-                                  widget.productsDic ?? "",
-                                )
-                              : Text(
-                                  widget.productsDic ?? "",
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  style: TextStyle(color: AppColor.black2),
-                                ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: InkWell(
-                                onTap: () {
-                                  products.readMoreTrueFalse();
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      color: AppColor.black5),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      products.readMore
-                                          ? "Read Less"
-                                          : "Read More",
-                                    ),
+                          (products.imageList?.isNotEmpty ?? false)
+                              ? CarouselSlider(
+                                  items: products.imageList
+                                      ?.map(
+                                        (e) => Container(
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: NetworkImage("https://drive.google.com/uc?id=$e"),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                  carouselController: products.carouselController,
+                                  options: CarouselOptions(
+                                    scrollPhysics: const BouncingScrollPhysics(),
+                                    autoPlay: true,
+                                    aspectRatio: 1,
+                                    viewportFraction: 1,
                                   ),
-                                ),
+                                )
+                              : Container(),
+                          Container(
+                            width: MediaQuery.of(context).size.width,
+                            color: AppColor.black2,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Text(
+                                "Add minimum ${widget.productMoq} pcs to purchase",
+                                style: AppFonts.semiBoldWhite,
+                                textAlign: TextAlign.center,
                               ),
                             ),
                           ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            color: AppColor.white,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    widget.productName ?? "",
+                                    style: AppFonts.semiBoldBlack,
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Text(
+                                    "Product Description : ",
+                                    style: AppFonts.textFieldLabelGary,
+                                  ),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  products.readMore
+                                      ? Text(
+                                          widget.productsDic ?? "",
+                                        )
+                                      : Text(
+                                          widget.productsDic ?? "",
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                          style: TextStyle(color: AppColor.black2),
+                                        ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Align(
+                                      alignment: Alignment.centerRight,
+                                      child: InkWell(
+                                        onTap: () {
+                                          products.readMoreTrueFalse();
+                                        },
+                                        child: Container(
+                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black5),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              products.readMore ? "Read Less" : "Read More",
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Select Models :",
+                              style: AppFonts.semiBoldBlack,
+                            ),
+                          ),
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: products.productsList.length,
+                            itemBuilder: (context, int index) {
+                              VariantProductData? vProduct = products.productsList[index];
+                              return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  decoration: BoxDecoration(color: AppColor.white, borderRadius: BorderRadius.circular(5)),
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    Text(
+                                                      vProduct.variantName ?? "",
+                                                      style: AppFonts.regularBlack,
+                                                      maxLines: 2,
+                                                      overflow: TextOverflow.ellipsis,
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    Text(
+                                                      "₹ ${vProduct.productSp.toString()} per pc",
+                                                      style: AppFonts.semiBoldBlack,
+                                                      maxLines: 2,
+                                                      overflow: TextOverflow.ellipsis,
+                                                    ),
+                                                    Text(
+                                                      "Min Qty : ${vProduct.productMoq.toString()} pcs",
+                                                      style: AppFonts.regularBlack,
+                                                      maxLines: 2,
+                                                      overflow: TextOverflow.ellipsis,
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(5),
+                                            border: Border.all(color: AppColor.black5),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Row(
+                                              children: [
+                                                InkWell(
+                                                  onTap: () {
+                                                    setState(
+                                                      () {
+                                                        if ((vProduct.qty ?? 0) < 1) {
+                                                        } else {
+                                                          vProduct.qty = (vProduct.qty ?? 0) - int.parse(vProduct.productMoq ?? "0");
+
+                                                          products.toMinus(
+                                                            spPrice: double.parse(vProduct.productSp.toString()),
+                                                            gstPer: double.parse(vProduct.pGst.toString()),
+                                                            pImage: widget.image1 ?? "",
+                                                            pName: vProduct.productName ?? "",
+                                                            pQty: vProduct.qty.toString() ?? "",
+                                                            pTotal: products.mainTotal.toString() ?? "",
+                                                            pModel: vProduct.variantName ?? "",
+                                                          );
+                                                        }
+                                                      },
+                                                    );
+                                                  },
+                                                  child: const Icon(
+                                                    Icons.remove,
+                                                    size: 15,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                vProduct.qty == null ? const Text("0") : Text(vProduct.qty.toString()),
+                                                const SizedBox(
+                                                  width: 5,
+                                                ),
+                                                InkWell(
+                                                  onTap: () {
+                                                    setState(
+                                                      () {
+                                                        vProduct.qty = (vProduct.qty ?? 0) + int.parse(vProduct.productMoq ?? "0");
+                                                        products.toAdd(
+                                                          spPrice: double.parse(vProduct.productSp.toString()),
+                                                          gstPer: double.parse(vProduct.pGst.toString()),
+                                                          pImage: widget.image1 ?? "",
+                                                          pName: vProduct.productName ?? "",
+                                                          pQty: vProduct.qty.toString() ?? "",
+                                                          pTotal: products.mainTotal.toString() ?? "",
+                                                          pModel: vProduct.variantName ?? "",
+                                                        );
+                                                      },
+                                                    );
+                                                  },
+                                                  child: const Icon(
+                                                    Icons.add,
+                                                    size: 15,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          )
                         ],
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Select Models :",
-                      style: AppFonts.semiBoldBlack,
-                    ),
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: products.productsList.length,
-                    itemBuilder: (context, int index) {
-                      VariantProductData? vProduct =
-                          products.productsList[index];
-                      return Padding(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: AppColor.white,
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Expanded(
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const SizedBox(
-                                              height: 10,
-                                            ),
-                                            Text(
-                                              vProduct.variantName ?? "",
-                                              style: AppFonts.regularBlack,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            const SizedBox(
-                                              height: 5,
-                                            ),
-                                            Text(
-                                              "₹ ${vProduct.productSp.toString() ?? ""} per pc",
-                                              style: AppFonts.semiBoldBlack,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            Text(
-                                              "Min Qty : ${vProduct.productMoq.toString() ?? ""} pcs",
-                                              style: AppFonts.regularBlack,
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                            const SizedBox(
-                                              height: 5,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(color: AppColor.black5),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Row(
-                                      children: [
-                                        InkWell(
-                                          onTap: () {},
-                                          child: const Icon(
-                                            Icons.remove,
-                                            size: 15,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(products.productsList[index].qty
-                                                .toString()),
-                                        const SizedBox(
-                                          width: 5,
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            products.qtyMinus(
-                                                int.parse(
-                                                    vProduct.productMoq ?? "0"),
-                                                vProduct.qty ?? 0);
-                                          },
-                                          child: const Icon(
-                                            Icons.add,
-                                            size: 15,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Sub Total : ${products.subTotal.roundToDouble()} + GST ${products.gst.roundToDouble()} (${products.gstPercentage.roundToDouble()}%)",
+                            ),
+                            Text(
+                              "Main Total : ${products.mainTotal.roundToDouble()}",
+                              style: AppFonts.semiBoldBlack,
+                            ),
+                          ],
                         ),
-                      );
-                    },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          child: ElevatedButton(
+                              style: ButtonStyle(
+                                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                backgroundColor: MaterialStateProperty.all(AppColor.mainColor),
+                                overlayColor: MaterialStateProperty.all(Colors.white10),
+                              ),
+                              onPressed: () {
+                                products.addToCart();
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Text(
+                                  "Add to cart",
+                                  style: TextStyle(color: AppColor.white),
+                                ),
+                              )),
+                        ),
+                      ),
+                    ],
                   )
                 ],
               ),
             ),
           );
-        }),
+        },
       ),
     );
   }
@@ -321,9 +391,12 @@ class _ProductsDetailsState extends State<ProductsDetails> {
 class ProductsDetailsModel extends ChangeNotifier {
   List<String>? imageList = [];
   List<VariantProductData> productsList = [];
-  int qty = 0;
   bool readMore = false;
-
+  double subTotal = 0;
+  double mainTotal = 0;
+  double gst = 0;
+  double gstPercentage = 0;
+  List<AddToCartModel> cartList = [];
   final CarouselController carouselController = CarouselController();
 
   getVariantProducts(String productId, BuildContext context) async {
@@ -361,22 +434,55 @@ class ProductsDetailsModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  qtyAdd(int mQty) {
-    qty = mQty++;
+  toAdd({
+    required double spPrice,
+    required double gstPer,
+    required String pImage,
+    required String pName,
+    required String pModel,
+    required String pQty,
+    required String pTotal,
+  }) {
+    AddToCartModel addToCartModel = AddToCartModel(
+      productImage: pImage,
+      productName: pName,
+      productQty: pQty,
+      total: pTotal,
+      productModel: pModel,
+    );
+    cartList.add(addToCartModel);
+    gst = (spPrice * gstPer) / 100;
+    subTotal = subTotal + spPrice;
+    mainTotal = subTotal + gst;
     notifyListeners();
   }
 
-  int qtyMinus(int mQty, int sQty) {
-    print("$mQty $sQty");
-
-    int qty = sQty + mQty;
-
+  toMinus({
+    required double spPrice,
+    required double gstPer,
+    required String pImage,
+    required String pName,
+    required String pQty,
+    required String pModel,
+    required String pTotal,
+  }) {
+    AddToCartModel addToCartModel = AddToCartModel(
+      productImage: pImage,
+      productName: pName,
+      productQty: pQty,
+      total: pTotal,
+      productModel: pModel,
+    );
+    cartList.remove(addToCartModel);
+    gst = (spPrice * gstPer) / 100;
     notifyListeners();
-    return qty;
+    subTotal = subTotal - spPrice;
   }
 
   setListNull() {
-    qty = 0;
+    subTotal = 0;
+    mainTotal = 0;
+    gst = 0;
     imageList = [];
     productsList = [];
     notifyListeners();
@@ -390,5 +496,11 @@ class ProductsDetailsModel extends ChangeNotifier {
       readMore = true;
       notifyListeners();
     }
+  }
+
+  addToCart() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    var stringList = json.encode(cartList);
+    sharedPreferences.setString(SharedPrefConstant.CART_LIST, stringList);
   }
 }

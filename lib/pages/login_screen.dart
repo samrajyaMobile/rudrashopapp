@@ -161,6 +161,8 @@ class LoginModel extends ChangeNotifier {
       var data = LoginResponse.fromJson(jsonData);
 
       if (data.status ?? false) {
+
+        sharedPreferences.setBool(SharedPrefConstant.U_LOGIN, true);
         sharedPreferences.setString(SharedPrefConstant.U_EMAIL, data.user?.first.uEmail ?? "");
         sharedPreferences.setString(SharedPrefConstant.U_NAME, data.user?.first.uName ?? "");
         sharedPreferences.setString(SharedPrefConstant.U_SURNAME, data.user?.first.uSurname ?? "");

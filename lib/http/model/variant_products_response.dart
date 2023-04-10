@@ -63,7 +63,7 @@ class VariantProductData {
   String? pGst;
   String? discount;
   String? productMoq;
-  int? qty = 0;
+  int? qty;
 
   factory VariantProductData.fromJson(Map<String, dynamic> json) =>
       VariantProductData(
@@ -89,6 +89,6 @@ class VariantProductData {
         "pGst": pGst,
         "discount": discount,
         "productMoq": productMoq,
-        "qty": qty,
+        "qty": qty ,
       };
 }
