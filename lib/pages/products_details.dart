@@ -13,45 +13,14 @@ import 'package:rudrashop/utils/app_dialog.dart';
 import 'package:rudrashop/utils/app_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:html/parser.dart';
 
 class ProductsDetails extends StatefulWidget {
   String? pId;
-  String? categoryId;
-  String? categoryName;
-  String? subCategoryId;
-  String? subCategoryName;
-  String? sub3CategoryId;
-  String? sub3CategoryName;
-  String? productName;
-  String? productSp;
-  String? productMrp;
-  String? pGst;
-  String? discount;
-  String? productMoq;
-  String? productsDic;
-  String? image1;
-  String? image2;
-  String? image3;
 
   ProductsDetails({
     super.key,
     required this.pId,
-    required this.categoryId,
-    required this.categoryName,
-    required this.subCategoryId,
-    required this.subCategoryName,
-    required this.sub3CategoryId,
-    required this.sub3CategoryName,
-    required this.productName,
-    required this.productSp,
-    required this.productMrp,
-    required this.pGst,
-    required this.discount,
-    required this.productMoq,
-    required this.productsDic,
-    required this.image1,
-    required this.image2,
-    required this.image3,
   });
 
   @override
@@ -63,12 +32,22 @@ class _ProductsDetailsState extends State<ProductsDetails> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) async {
-        await Provider.of<ProductsDetailsModel>(context, listen: false).setImageInSlider(widget.image1 ?? "", widget.image2 ?? "", widget.image3 ?? "");
-        await Provider.of<ProductsDetailsModel>(context, listen: false).getVariantProducts(widget.pId ?? "", context);
+        await Provider.of<ProductsDetailsModel>(context, listen: false)
+            .getProductsDetails(widget.pId ?? "", context);
+        await Provider.of<ProductsDetailsModel>(context, listen: false)
+            .setImageInSlider();
       },
     );
 
     super.initState();
+  }
+
+  String _parseHtmlString(String htmlString) {
+    final document = parse(htmlString);
+    final String parsedString =
+        parse(document.body?.text ?? "").documentElement?.text ?? "";
+
+    return parsedString;
   }
 
   @override
@@ -82,12 +61,16 @@ class _ProductsDetailsState extends State<ProductsDetails> {
               title: const Text("Back"),
               backgroundColor: AppColor.mainColor,
               actions: [
-                IconButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const Cart()));
-                }, icon: const Icon(Icons.shopping_cart))
+                IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Cart()));
+                    },
+                    icon: const Icon(Icons.shopping_cart))
               ],
             ),
-
             body: WillPopScope(
               onWillPop: () async {
                 products.setListNull();
@@ -101,22 +84,25 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          (products.imageList?.isNotEmpty ?? false)
+                          (products.imageList.isNotEmpty ?? false)
                               ? CarouselSlider(
                                   items: products.imageList
-                                      ?.map(
+                                      .map(
                                         (e) => Container(
                                           decoration: BoxDecoration(
                                             image: DecorationImage(
-                                              image: NetworkImage("https://drive.google.com/uc?id=$e"),
+                                              image: NetworkImage(
+                                                  e),
                                             ),
                                           ),
                                         ),
                                       )
                                       .toList(),
-                                  carouselController: products.carouselController,
+                                  carouselController:
+                                      products.carouselController,
                                   options: CarouselOptions(
-                                    scrollPhysics: const BouncingScrollPhysics(),
+                                    scrollPhysics:
+                                        const BouncingScrollPhysics(),
                                     autoPlay: true,
                                     aspectRatio: 1,
                                     viewportFraction: 1,
@@ -129,7 +115,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                             child: Padding(
                               padding: const EdgeInsets.all(10),
                               child: Text(
-                                "Add minimum ${widget.productMoq} pcs to purchase",
+                                "Add minimum pcs to purchase",
                                 style: AppFonts.semiBoldWhite,
                                 textAlign: TextAlign.center,
                               ),
@@ -146,7 +132,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    widget.productName ?? "",
+                                    products.jsonData["name"] ?? "",
                                     style: AppFonts.semiBoldBlack,
                                   ),
                                   const SizedBox(
@@ -161,13 +147,14 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                   ),
                                   products.readMore
                                       ? Text(
-                                          widget.productsDic ?? "",
+                                          _parseHtmlString(products.jsonData["description"]),
                                         )
                                       : Text(
-                                          widget.productsDic ?? "",
+                                    _parseHtmlString(products.jsonData["description"]),
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 2,
-                                          style: TextStyle(color: AppColor.black2),
+                                          style:
+                                              TextStyle(color: AppColor.black2),
                                         ),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -178,11 +165,16 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                           products.readMoreTrueFalse();
                                         },
                                         child: Container(
-                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black5),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              color: AppColor.black5),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Text(
-                                              products.readMore ? "Read Less" : "Read More",
+                                              products.readMore
+                                                  ? "Read Less"
+                                                  : "Read More",
                                             ),
                                           ),
                                         ),
@@ -200,51 +192,61 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                               style: AppFonts.semiBoldBlack,
                             ),
                           ),
-                          ListView.builder(
+                          /*ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: products.productsList.length,
+                            itemCount: products.list.length,
                             itemBuilder: (context, int index) {
-                              VariantProductData? vProduct = products.productsList[index];
                               return Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Container(
-                                  decoration: BoxDecoration(color: AppColor.white, borderRadius: BorderRadius.circular(5)),
+                                  decoration: BoxDecoration(
+                                      color: AppColor.white,
+                                      borderRadius: BorderRadius.circular(5)),
                                   child: Row(
                                     children: [
                                       Expanded(
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Row(
-                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
                                             children: [
                                               Expanded(
                                                 child: Column(
-                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     const SizedBox(
                                                       height: 10,
                                                     ),
                                                     Text(
-                                                      vProduct.variantName ?? "",
-                                                      style: AppFonts.regularBlack,
+                                                      vProduct.variantName ??
+                                                          "",
+                                                      style:
+                                                          AppFonts.regularBlack,
                                                       maxLines: 2,
-                                                      overflow: TextOverflow.ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                     ),
                                                     const SizedBox(
                                                       height: 5,
                                                     ),
                                                     Text(
                                                       "₹ ${vProduct.productSp.toString()} per pc",
-                                                      style: AppFonts.semiBoldBlack,
+                                                      style: AppFonts
+                                                          .semiBoldBlack,
                                                       maxLines: 2,
-                                                      overflow: TextOverflow.ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                     ),
                                                     Text(
                                                       "Min Qty : ${vProduct.productMoq.toString()} pcs",
-                                                      style: AppFonts.regularBlack,
+                                                      style:
+                                                          AppFonts.regularBlack,
                                                       maxLines: 2,
-                                                      overflow: TextOverflow.ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                     ),
                                                     const SizedBox(
                                                       height: 5,
@@ -260,8 +262,10 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(5),
-                                            border: Border.all(color: AppColor.black5),
+                                            borderRadius:
+                                                BorderRadius.circular(5),
+                                            border: Border.all(
+                                                color: AppColor.black5),
                                           ),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
@@ -271,18 +275,41 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                                   onTap: () {
                                                     setState(
                                                       () {
-                                                        if ((vProduct.qty ?? 0) < 1) {
+                                                        if ((vProduct.qty ??
+                                                                0) <
+                                                            1) {
                                                         } else {
-                                                          vProduct.qty = (vProduct.qty ?? 0) - int.parse(vProduct.productMoq ?? "0");
+                                                          vProduct
+                                                              .qty = (vProduct
+                                                                      .qty ??
+                                                                  0) -
+                                                              int.parse(vProduct
+                                                                      .productMoq ??
+                                                                  "0");
 
                                                           products.toMinus(
-                                                            spPrice: double.parse(vProduct.productSp.toString()),
-                                                            gstPer: double.parse(vProduct.pGst.toString()),
-                                                            pImage: widget.image1 ?? "",
-                                                            pName: vProduct.productName ?? "",
-                                                            pQty: vProduct.qty.toString() ?? "",
-                                                            pTotal: products.mainTotal.toString() ?? "",
-                                                            pModel: vProduct.variantName ?? "",
+                                                            spPrice: double
+                                                                .parse(vProduct
+                                                                    .productSp
+                                                                    .toString()),
+                                                            gstPer: double
+                                                                .parse(vProduct
+                                                                    .pGst
+                                                                    .toString()),
+                                                            pImage: "",
+                                                            pName: vProduct
+                                                                    .productName ??
+                                                                "",
+                                                            pQty: vProduct.qty
+                                                                    .toString() ??
+                                                                "",
+                                                            pTotal: products
+                                                                    .mainTotal
+                                                                    .toString() ??
+                                                                "",
+                                                            pModel: vProduct
+                                                                    .variantName ??
+                                                                "",
                                                           );
                                                         }
                                                       },
@@ -296,7 +323,10 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                                 const SizedBox(
                                                   width: 5,
                                                 ),
-                                                vProduct.qty == null ? const Text("0") : Text(vProduct.qty.toString()),
+                                                vProduct.qty == null
+                                                    ? const Text("0")
+                                                    : Text(vProduct.qty
+                                                        .toString()),
                                                 const SizedBox(
                                                   width: 5,
                                                 ),
@@ -304,15 +334,33 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                                   onTap: () {
                                                     setState(
                                                       () {
-                                                        vProduct.qty = (vProduct.qty ?? 0) + int.parse(vProduct.productMoq ?? "0");
+                                                        vProduct.qty = (vProduct
+                                                                    .qty ??
+                                                                0) +
+                                                            int.parse(vProduct
+                                                                    .productMoq ??
+                                                                "0");
                                                         products.toAdd(
-                                                          spPrice: double.parse(vProduct.productSp.toString()),
-                                                          gstPer: double.parse(vProduct.pGst.toString()),
-                                                          pImage: widget.image1 ?? "",
-                                                          pName: vProduct.productName ?? "",
-                                                          pQty: vProduct.qty.toString() ?? "",
-                                                          pTotal: products.mainTotal.toString() ?? "",
-                                                          pModel: vProduct.variantName ?? "",
+                                                          spPrice: double.parse(
+                                                              vProduct.productSp
+                                                                  .toString()),
+                                                          gstPer: double.parse(
+                                                              vProduct.pGst
+                                                                  .toString()),
+                                                          pImage: "",
+                                                          pName: vProduct
+                                                                  .productName ??
+                                                              "",
+                                                          pQty: vProduct.qty
+                                                                  .toString() ??
+                                                              "",
+                                                          pTotal: products
+                                                                  .mainTotal
+                                                                  .toString() ??
+                                                              "",
+                                                          pModel: vProduct
+                                                                  .variantName ??
+                                                              "",
                                                         );
                                                       },
                                                     );
@@ -332,7 +380,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                 ),
                               );
                             },
-                          )
+                          )*/
                         ],
                       ),
                     ),
@@ -360,9 +408,14 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                         child: SizedBox(
                           child: ElevatedButton(
                               style: ButtonStyle(
-                                shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                                backgroundColor: MaterialStateProperty.all(AppColor.mainColor),
-                                overlayColor: MaterialStateProperty.all(Colors.white10),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                                backgroundColor: MaterialStateProperty.all(
+                                    AppColor.mainColor),
+                                overlayColor:
+                                    MaterialStateProperty.all(Colors.white10),
                               ),
                               onPressed: () {
                                 products.addToCart();
@@ -389,8 +442,12 @@ class _ProductsDetailsState extends State<ProductsDetails> {
 }
 
 class ProductsDetailsModel extends ChangeNotifier {
-  List<String>? imageList = [];
-  List<VariantProductData> productsList = [];
+  var jsonData;
+
+  List<dynamic> list = [];
+  List<int> variationProductsId = [];
+  List<int> variationProducts = [];
+  List<String> imageList = [];
   bool readMore = false;
   double subTotal = 0;
   double mainTotal = 0;
@@ -399,39 +456,38 @@ class ProductsDetailsModel extends ChangeNotifier {
   List<AddToCartModel> cartList = [];
   final CarouselController carouselController = CarouselController();
 
-  getVariantProducts(String productId, BuildContext context) async {
+  getProductsDetails(String productId, BuildContext context) async {
     showDialog(context: context, builder: (context) => const LoadingDialog());
-    String url = "${AppConstant.GET_VARIANT_OF_PRODUCTS}?productId=$productId";
+    String url =
+        "https://samrajya.co.in/index.php/wp-json/wc/v3/products/$productId?consumer_key=ck_6fec19dc34310bf11f6a020ec2526f0075cdae8e&consumer_secret=cs_80ceaf6f10850003191baaf39da36f7ae1dcf637";
 
     var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       Navigator.pop(context);
 
-      var jsonData = json.decode(response.body);
+      jsonData = json.decode(response.body);
 
-      if (jsonData["status"] ?? false) {
-        var data = VariantProductsResponse.fromJson(jsonData);
-        if (data.variantProducts != []) {
-          productsList = data.variantProducts ?? [];
-          notifyListeners();
-        } else {}
-      }
+      notifyListeners();
     } else {
       Navigator.pop(context);
     }
   }
 
-  setImageInSlider(String image0, String image1, String image2) {
-    if (image0.isNotEmpty || image0 != "") {
-      imageList?.add(image0);
+  getVariantProducts() {
+    for (var i = 0; i < list[0]["variations"]; ++i) {
+      variationProductsId.add(list[0]["variations"][i]);
     }
-    if (image1.isNotEmpty || image1 != "") {
-      imageList?.add(image1);
+
+    for (var i = 0; i < variationProductsId.length; ++i) {
+      print(variationProductsId[i]);
     }
-    if (image2.isNotEmpty || image2 != "") {
-      imageList?.add(image2);
+  }
+
+  setImageInSlider() {
+    for (var i = 0; i < jsonData["images"].length; ++i) {
+      imageList.add(jsonData["images"][i]["src"]);
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   toAdd({
@@ -478,16 +534,14 @@ class ProductsDetailsModel extends ChangeNotifier {
     notifyListeners();
     subTotal = subTotal - spPrice;
   }
-
   setListNull() {
     subTotal = 0;
     mainTotal = 0;
     gst = 0;
     imageList = [];
-    productsList = [];
+    // productsList = [];
     notifyListeners();
   }
-
   readMoreTrueFalse() {
     if (readMore) {
       readMore = false;

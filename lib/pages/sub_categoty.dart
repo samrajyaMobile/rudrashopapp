@@ -5,10 +5,11 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:rudrashop/http/model/sub_category_response.dart';
-import 'package:rudrashop/pages/sub3_category.dart';
+import 'package:rudrashop/pages/products.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:http/http.dart' as http;
 import 'package:rudrashop/utils/app_constant.dart';
+import 'package:html/parser.dart';
 import 'package:rudrashop/utils/app_dialog.dart';
 import 'package:rudrashop/utils/app_fonts.dart';
 
@@ -16,7 +17,8 @@ class SubCategoryScreen extends StatefulWidget {
   String? categoryName;
   String? categoryId;
 
-  SubCategoryScreen({super.key, required this.categoryName, required this.categoryId});
+  SubCategoryScreen(
+      {super.key, required this.categoryName, required this.categoryId});
 
   @override
   State<SubCategoryScreen> createState() => _SubCategoryScreenState();
@@ -26,9 +28,18 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await Provider.of<SubCategoryModel>(context, listen: false).getSubCategory(widget.categoryId ?? "", context);
+      await Provider.of<SubCategoryModel>(context, listen: false)
+          .getSubCategory(widget.categoryId ?? "", context);
     });
     super.initState();
+  }
+
+  String _parseHtmlString(String htmlString) {
+    final document = parse(htmlString);
+    final String parsedString =
+        parse(document.body?.text ?? "").documentElement?.text ?? "";
+
+    return parsedString;
   }
 
   @override
@@ -39,7 +50,7 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
           backgroundColor: AppColor.white,
           appBar: AppBar(
             backgroundColor: AppColor.mainColor,
-            title: Text(widget.categoryName ?? ""),
+            title: Text(_parseHtmlString(widget.categoryName ?? "")),
           ),
           body: WillPopScope(
             onWillPop: () async {
@@ -51,23 +62,32 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
                 Expanded(
                   child: GridView.builder(
                     physics: const BouncingScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                    ),
                     shrinkWrap: true,
-                    itemCount: subCategory.subCategoryList.length,
+                    itemCount: subCategory.list.length,
                     itemBuilder: (context, int index) {
-                      SubCategoryData subCate = subCategory.subCategoryList[index];
-
                       return InkWell(
                         onTap: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Sub3Category(subCategoryName: subCate.subCategoryName, subCategoryId: subCate.subCategoryId)));
+                                  builder: (context) => Products(
+                                        categoryId: subCategory.list[index]
+                                                ["id"]
+                                            .toString(),
+                                        categoryName: subCategory.list[index]
+                                            ["name"],
+                                      )));
                         },
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black7),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: AppColor.black7),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Column(
@@ -75,10 +95,12 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
                                 children: [
                                   Expanded(
                                     child: SizedBox(
-                                      height: 120,
-                                      width: 120,
                                       child: Image.network(
-                                        "https://drive.google.com/uc?id=${subCate.subCategoryImage ?? ""}",
+                                        subCategory.list[index]["image"] == null
+                                            ? "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg"
+                                            : subCategory.list[index]["image"]
+                                                ["src"],
+                                        fit: BoxFit.contain,
                                       ),
                                     ),
                                   ),
@@ -86,11 +108,12 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
                                     height: 10,
                                   ),
                                   Center(
-                                      child: Text(
-                                    subCate.subCategoryName ?? "",
-                                    style: AppFonts.textFieldLabelBlack,
-                                    textAlign: TextAlign.center,
-                                  ))
+                                    child: Text(
+                                      subCategory.list[index]["name"],
+                                      style: AppFonts.textFieldLabelBlack,
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
@@ -110,29 +133,22 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
 }
 
 class SubCategoryModel extends ChangeNotifier {
-  List<SubCategoryData> subCategoryList = [];
+  List<dynamic> list = [];
 
   getSubCategory(String categoryId, BuildContext context) async {
-    showDialog(context: context, builder: (context) => const LoadingDialog(), barrierDismissible: false);
-    var url = "${AppConstant.GET_SUB_CATEGORIES}${QueryParamsConstant.CATEGORY_ID}=$categoryId";
+    showDialog(
+        context: context,
+        builder: (context) => const LoadingDialog(),
+        barrierDismissible: false);
 
+    var url =
+        "https://samrajya.co.in/index.php/wp-json/wc/v3/products/categories?consumer_key=ck_6fec19dc34310bf11f6a020ec2526f0075cdae8e&per_page=100&consumer_secret=cs_80ceaf6f10850003191baaf39da36f7ae1dcf637&parent=$categoryId&page=1";
     var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       Navigator.pop(context);
       var jsonData = json.decode(response.body);
-
-      if (jsonData["status"] ?? false) {
-        var data = SubCategoryResponse.fromJson(jsonData);
-
-        if (data.status ?? false) {
-          subCategoryList = data.subCategory ?? [];
-          notifyListeners();
-        } else {
-          makeListNull();
-        }
-      } else {
-        makeListNull();
-      }
+      list = List<dynamic>.from(jsonData);
+      notifyListeners();
     } else {
       Navigator.pop(context);
       makeListNull();
@@ -140,7 +156,7 @@ class SubCategoryModel extends ChangeNotifier {
   }
 
   makeListNull() {
-    subCategoryList = [];
+    list = [];
     notifyListeners();
   }
 }

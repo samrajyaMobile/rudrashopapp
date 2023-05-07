@@ -1,8 +1,9 @@
 // ignore_for_file: use_build_context_synchronously, prefer_typing_uninitialized_variables
 import 'package:flutter/material.dart';
 import 'package:rudrashop/pages/cart.dart';
-import 'package:rudrashop/pages/home.dart';
+
 import 'package:rudrashop/pages/settings.dart';
+import 'package:rudrashop/pages/sub_categoty.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:provider/provider.dart';
 
@@ -62,7 +63,7 @@ class _DashboardState extends State<Dashboard> {
                 }, icon: const Icon(Icons.shopping_cart))
               ],
             ),
-            body: dashboard.page ?? dashboard.pages[dashboard._currentPage],
+
           ),
         );
       },
@@ -73,12 +74,12 @@ class _DashboardState extends State<Dashboard> {
 class DashboardModel extends ChangeNotifier {
   int _currentPage = 1;
 
-  final List pages = [const Home(), const Settings(), const Home()];
+
   var page;
 
   changePage(int index) {
     _currentPage = index;
-    page = pages[_currentPage];
+
     notifyListeners();
   }
 }

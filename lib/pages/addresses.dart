@@ -5,7 +5,6 @@ import 'package:rudrashop/http/model/Invoice.dart';
 import 'package:rudrashop/http/model/Supplier.dart';
 import 'package:rudrashop/http/model/Customer.dart';
 import 'package:rudrashop/http/model/add_to_cart_model.dart';
-import 'package:rudrashop/http/model/pdf_invoicea_api.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:rudrashop/utils/app_constant.dart';
 import 'package:rudrashop/utils/app_fonts.dart';
@@ -108,16 +107,10 @@ class _AddressScreenState extends State<AddressScreen> {
                           customer: const Customer(name: 'Nikesh Sagathiya', address: '5-Rohidashpara Rajkot - 360003'),
                           info: InvoiceInfo(description: "My Description", number: "", date: DateTime.now(), dueDate: duDate),
                           items: [
-                            InvoiceItem(productName: ca, date: date, quantity: quantity, gst: gst, unitPrice: unitPrice)
+
                           ],
                         );
                       }
-
-
-
-                      final pdfFile = await PdfInvoiceApi.generate(invoice);
-
-                      PdfApi.openFile(pdfFile);
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(16),

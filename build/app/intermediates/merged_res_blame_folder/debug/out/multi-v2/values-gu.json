@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.rudrashopapp-mergeDebugResources-14:/values-gu/values-gu.xml",
+            "outputFile": "com.example.rudrashopapp-mergeDebugResources-12:/values-gu/values-gu.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\3794f8805813d716e1232c1d56f0ad65\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-gu\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "195",
-                        "endColumns": "142",
-                        "endOffsets": "337"
-                    },
-                    "to": {
-                        "startLines": "10",
-                        "startColumns": "4",
-                        "startOffsets": "1037",
-                        "endColumns": "146",
-                        "endOffsets": "1179"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\b121b3b78989ee63d33a65614e3f7adb\\transformed\\jetified-play-services-base-18.0.1\\res\\values-gu\\values.xml",
+                    "source": "C:\\Users\\Nikesh\\.gradle\\caches\\transforms-3\\b121b3b78989ee63d33a65614e3f7adb\\transformed\\jetified-play-services-base-18.0.1\\res\\values-gu\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\9d13f608411ebd1b864ae55bb53a8fcc\\transformed\\core-1.6.0\\res\\values-gu\\values-gu.xml",
+                    "source": "C:\\Users\\Nikesh\\.gradle\\caches\\transforms-3\\9d13f608411ebd1b864ae55bb53a8fcc\\transformed\\core-1.6.0\\res\\values-gu\\values-gu.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -52,6 +35,23 @@
                         "startOffsets": "2231",
                         "endColumns": "100",
                         "endOffsets": "2327"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Nikesh\\.gradle\\caches\\transforms-3\\3794f8805813d716e1232c1d56f0ad65\\transformed\\jetified-play-services-basement-18.1.0\\res\\values-gu\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "142",
+                        "endOffsets": "337"
+                    },
+                    "to": {
+                        "startLines": "10",
+                        "startColumns": "4",
+                        "startOffsets": "1037",
+                        "endColumns": "146",
+                        "endOffsets": "1179"
                     }
                 }
             ]
