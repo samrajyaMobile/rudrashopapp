@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final bannersResponse = bannersResponseFromJson(jsonString);
-
 import 'dart:convert';
 
 BannersResponse bannersResponseFromJson(String str) => BannersResponse.fromJson(json.decode(str));

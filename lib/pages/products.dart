@@ -212,14 +212,12 @@ class _ProductsState extends State<Products> {
                 : Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Center(
-                      child: Container(
-                        child: Text("No More Products in this Category",
-                            style: TextStyle(
-                                color: AppColor.mainColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 25),
-                            textAlign: TextAlign.center),
-                      ),
+                      child: Text("No More Products in this Category",
+                          style: TextStyle(
+                              color: AppColor.mainColor,
+                              fontWeight: FontWeight.w700,
+                              fontSize: 25),
+                          textAlign: TextAlign.center),
                     ),
                   ),
             const SizedBox(height: 10),

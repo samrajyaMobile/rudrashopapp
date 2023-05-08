@@ -7,6 +7,7 @@ import 'package:rudrashop/pages/dashboard.dart';
 import 'package:rudrashop/pages/login_screen.dart';
 
 import 'package:rudrashop/pages/products_details.dart';
+import 'package:rudrashop/pages/related_products_details.dart';
 import 'package:rudrashop/pages/sub_categoty.dart';
 import 'package:rudrashop/utils/app_constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => LoginModel()),
         ChangeNotifierProvider(create: (context) => SubCategoryModel()),
         ChangeNotifierProvider(create: (context) => ProductsDetailsModel()),
+        ChangeNotifierProvider(create: (context) => RelatedProductsModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

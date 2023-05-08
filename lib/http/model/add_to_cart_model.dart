@@ -1,31 +1,19 @@
 class AddToCartModel {
-  String? productImage;
-  String? productName;
-  String? productModel;
-  String? productQty;
-  String? total;
+  int? id;
+  int? productQty;
 
   AddToCartModel({
-    required this.productImage,
-    required this.productName,
-    required this.productModel,
+    required this.id,
     required this.productQty,
-    required this.total,
   });
 
-  Map<String, String> toJson() => {
-        "productsImage": productImage!,
-        "productsName": productName!,
-        "productsModel": productModel!,
-        "productsQty": productQty!,
-        "total": total!,
+  Map<String, dynamic> toJson() => {
+        "id": id!,
+        "productQty": productQty!,
       };
 
   factory AddToCartModel.fromJson(Map<String, dynamic> json) => AddToCartModel(
-        productImage: json["productsImage"],
-        productName: json["productsName"],
-        productModel: json["productsModel"],
+        id: json["id"],
         productQty: json["productsQty"],
-        total: json["total"],
       );
 }

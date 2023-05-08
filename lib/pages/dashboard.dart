@@ -59,7 +59,7 @@ class _DashboardState extends State<Dashboard> {
               ),
               actions: [
                 IconButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const Cart()));
+               //   Navigator.push(context, MaterialPageRoute(builder: (context)=> const Cart()));
                 }, icon: const Icon(Icons.shopping_cart))
               ],
             ),
