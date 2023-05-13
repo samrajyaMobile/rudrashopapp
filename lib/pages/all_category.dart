@@ -37,6 +37,8 @@ class _AllCategoryState extends State<AllCategory> {
     }
   }
 
+
+
   String _parseHtmlString(String htmlString) {
     final document = parse(htmlString);
     final String parsedString = parse(document.body?.text ?? "").documentElement?.text ?? "";

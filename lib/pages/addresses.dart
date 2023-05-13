@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:rudrashop/http/model/Invoice.dart';
 import 'package:rudrashop/http/model/Supplier.dart';
 import 'package:rudrashop/http/model/Customer.dart';
 import 'package:rudrashop/http/model/add_to_cart_model.dart';
+import 'package:rudrashop/pages/orders_map.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:rudrashop/utils/app_constant.dart';
 import 'package:rudrashop/utils/app_fonts.dart';
@@ -24,6 +26,7 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+      await createOrderMap();
       await getAddress();
       await getData();
     });
@@ -33,7 +36,7 @@ class _AddressScreenState extends State<AddressScreen> {
   getAddress() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
-      address = preferences.getString(SharedPrefConstant.U_ADDRESS);
+      address = preferences.getString(SharedPrefConstant.U_ADDRESS1);
     });
   }
 
@@ -47,6 +50,57 @@ class _AddressScreenState extends State<AddressScreen> {
         cartList = List.from(jsonData).map((e) => AddToCartModel.fromJson(e)).toList();
       },
     );
+  }
+
+  createOrderMap() {
+    List<LineItems> lineItem = [];
+    List<ShippingLines> shippingLines = [];
+
+    LineItems item = LineItems(product_id: "16405", quantity: "2");
+
+    setState(() {
+      lineItem.add(item);
+    });
+
+    ShippingLines shippingLinesRequest = ShippingLines(method_id: "free_shipping", method_title: "Free Shipping", total: "1000.00");
+
+    setState(() {
+      shippingLines.add(shippingLinesRequest);
+    });
+
+    Billing billing = Billing(
+        first_name: "Nikesh",
+        last_name: "Sagathiya",
+        address_1: "123 Main Street",
+        address_2: "123 Main Street",
+        city: "San Francisco",
+        state: "CA",
+        postcode: "94103",
+        country: "US",
+        email: 'john.doe@example.com',
+        phone: "(555) 555-5555");
+
+    Shipping shipping = Shipping(
+        first_name: "Nikesh",
+        last_name: "Sagathiya",
+        address_1: "123 Main Street",
+        address_2: "123 Main Street",
+        city: "San Francisco",
+        state: "CA",
+        postcode: "94103",
+        country: "US");
+
+    OrdersMap ordersMap = OrdersMap(
+        status: "processing",
+        payment_method: "cod",
+        payment_method_title: "Cash on Delivery",
+        set_paid: false,
+        billing: billing,
+        shipping: shipping,
+        line_items: lineItem,
+        shipping_lines: shippingLines);
+
+    print(ordersMap.toJson());
   }
 
   @override
@@ -95,22 +149,7 @@ class _AddressScreenState extends State<AddressScreen> {
                       overlayColor: MaterialStateProperty.all(Colors.white10),
                     ),
                     onPressed: () async {
-                      final date = DateTime.now();
-                      final duDate = date.add(const Duration(days: 3));
-                      Invoice invoice;
-
-                      for (var i = 0; i < cartList.length; ++i) {
-                         invoice = Invoice(
-                          supplier: const Supplier(
-                            name: "Samragya Group",
-                          ),
-                          customer: const Customer(name: 'Nikesh Sagathiya', address: '5-Rohidashpara Rajkot - 360003'),
-                          info: InvoiceInfo(description: "My Description", number: "", date: DateTime.now(), dueDate: duDate),
-                          items: [
-
-                          ],
-                        );
-                      }
+                      createOrderMap();
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(16),

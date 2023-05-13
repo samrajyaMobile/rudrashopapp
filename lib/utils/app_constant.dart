@@ -35,15 +35,18 @@ class QueryParamsConstant {
 }
 
 class SharedPrefConstant {
+  static const U_ID = "u_id";
   static const U_LOGIN = "u_login";
   static const U_NAME = "u_name";
-  static const U_SURNAME = "u_surname";
+  static const U_DISPLAY_NAME = "u_surname";
   static const U_EMAIL = "u_email";
   static const U_MO_NUMBER = "u_mo_number";
   static const U_BUSINESS_NAME = "u_business";
-  static const U_ADDRESS = "u_address";
+  static const U_ADDRESS1 = "u_address";
+  static const U_ADDRESS2 = "u_address";
   static const U_CITY = "u_city";
   static const U_PIN = "u_pin";
   static const BANNERS = "banners";
   static const CART_LIST = "cart_list";
+  static const U_STATE = "cart_list";
 }

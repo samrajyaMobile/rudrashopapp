@@ -152,33 +152,36 @@ class LoginModel extends ChangeNotifier {
     String uPassword = _password.text.trim();
     String url = AppConstant.GET_LOGIN;
 
-    var response = await http.get(Uri.parse("$url&u_email=$uEmail&u_password=$uPassword"));
+    var response = await http.post(Uri.parse("http://samrajya.co.in/index.php/wp-json/your-namespace/v1/user-login"), body: {
+      "email": uEmail,
+      "password": uPassword,
+    });
 
     if (response.statusCode == 200) {
       Navigator.pop(context);
       var jsonData = json.decode(response.body);
 
-      var data = LoginResponse.fromJson(jsonData);
-
-      if (data.status ?? false) {
-
-        sharedPreferences.setBool(SharedPrefConstant.U_LOGIN, true);
-        sharedPreferences.setString(SharedPrefConstant.U_EMAIL, data.user?.first.uEmail ?? "");
-        sharedPreferences.setString(SharedPrefConstant.U_NAME, data.user?.first.uName ?? "");
-        sharedPreferences.setString(SharedPrefConstant.U_SURNAME, data.user?.first.uSurname ?? "");
-        sharedPreferences.setString(SharedPrefConstant.U_MO_NUMBER, data.user?.first.uMoNumber.toString() ?? "");
-        sharedPreferences.setString(SharedPrefConstant.U_BUSINESS_NAME, data.user?.first.uBusinessName ?? "");
-        sharedPreferences.setString(SharedPrefConstant.U_ADDRESS, data.user?.first.uAddress ?? "");
-        sharedPreferences.setString(SharedPrefConstant.U_CITY, data.user?.first.uCity ?? "");
-        sharedPreferences.setString(SharedPrefConstant.U_PIN, data.user?.first.uPincode.toString() ?? "");
-
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const Dashboard()));
+      if (jsonData["success"] ?? false) {
+        sharedPreferences.setBool(SharedPrefConstant.U_LOGIN, jsonData["success"]);
+        sharedPreferences.setString(SharedPrefConstant.U_ID, jsonData["user_id"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_EMAIL, jsonData["user_email"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_NAME, jsonData["display_name"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_MO_NUMBER, jsonData["billing_data"]["phone"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_ADDRESS1, jsonData["billing_data"]["address_1"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_ADDRESS2, jsonData["billing_data"]["address_2"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_CITY, jsonData["billing_data"]["city"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_PIN, jsonData["billing_data"]["postcode"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_STATE, jsonData["billing_data"]["state"].toString());
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const Dashboard(),
+          ),
+        );
       } else {
-        showDialog(
-          context: context,
-          builder: (context) => ErrorDialog(
-            errorTitle: 'Login Error',
-            errorMsg: data.message,
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Please enter correct credential"),
           ),
         );
       }

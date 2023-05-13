@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rudrashop/pages/dashboard.dart';
 import 'package:rudrashop/pages/login_screen.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:rudrashop/utils/app_fonts.dart';
@@ -18,6 +17,7 @@ class _SignupScreenState extends State<SignupScreen> {
         child: Scaffold(
       backgroundColor: AppColor.mainBackground,
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.all(25),
           child: Column(
@@ -27,20 +27,46 @@ class _SignupScreenState extends State<SignupScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: Text("Sign Up", style: AppFonts.title),
               ),
-              Container(
-                decoration: BoxDecoration(color: AppColor.white),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: TextFormField(
-                    style: AppFonts.textFieldBlack,
-                    decoration: InputDecoration(
-                      label: const Text("Name"),
-                      labelStyle: AppFonts.textFieldLabelGary,
-                      enabledBorder: InputBorder.none,
-                      focusedBorder: InputBorder.none,
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(color: AppColor.white),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: TextFormField(
+                          style: AppFonts.textFieldBlack,
+                          decoration: InputDecoration(
+                            label: const Text("Display Name"),
+                            labelStyle: AppFonts.textFieldLabelGary,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(color: AppColor.white),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: TextFormField(
+                          style: AppFonts.textFieldBlack,
+                          decoration: InputDecoration(
+                            label: const Text("Business Name"),
+                            labelStyle: AppFonts.textFieldLabelGary,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,
@@ -52,7 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: TextFormField(
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
-                      label: const Text("Surname"),
+                      label: const Text("Phone Number"),
                       labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
@@ -124,7 +150,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: TextFormField(
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
-                      label: const Text("Full Address"),
+                      label: const Text("Address Line 1"),
                       labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
@@ -142,13 +168,57 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: TextFormField(
                     style: AppFonts.textFieldBlack,
                     decoration: InputDecoration(
-                      label: const Text("City"),
+                      label: const Text("Address Line 2"),
                       labelStyle: AppFonts.textFieldLabelGary,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
                     ),
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(color: AppColor.white),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: TextFormField(
+                          style: AppFonts.textFieldBlack,
+                          decoration: InputDecoration(
+                            label: const Text("State"),
+                            labelStyle: AppFonts.textFieldLabelGary,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(color: AppColor.white),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: TextFormField(
+                          style: AppFonts.textFieldBlack,
+                          decoration: InputDecoration(
+                            label: const Text("City"),
+                            labelStyle: AppFonts.textFieldLabelGary,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,

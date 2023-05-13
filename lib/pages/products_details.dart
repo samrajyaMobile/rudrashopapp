@@ -1,11 +1,11 @@
-// ignore_for_file: must_be_immutable, use_build_context_synchronously
+// ignore_for_file: must_be_immutable, use_build_context_synchronously, depend_on_referenced_packages
 
 import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:googleapis/dfareporting/v3_4.dart';
 import 'package:provider/provider.dart';
 import 'package:rudrashop/http/model/add_to_cart_model.dart';
-import 'package:rudrashop/http/model/variant_products_response.dart';
 import 'package:rudrashop/http/model/variations_products.dart';
 import 'package:rudrashop/pages/cart.dart';
 import 'package:rudrashop/pages/related_products_details.dart';
@@ -34,6 +34,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) async {
+        Provider.of<ProductsDetailsModel>(context, listen: false).getCartData();
         Provider.of<ProductsDetailsModel>(context, listen: false).setListNull();
         await Provider.of<ProductsDetailsModel>(context, listen: false).getProductsDetails(widget.pId ?? "", context);
         Provider.of<ProductsDetailsModel>(context, listen: false).setImageInSlider();
@@ -66,19 +67,25 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                   children: [
                     products.cartList.isNotEmpty
                         ? Container(
-                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: Colors.white),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: Colors.white),
                             child: Padding(
-                              padding: const EdgeInsets.all(4),
+                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                               child: Text(
                                 products.cartList.length.toString(),
-                                style: TextStyle(color: Colors.black, fontSize: 10),
+                                style: const TextStyle(color: Colors.black, fontSize: 10, fontWeight: FontWeight.w700),
                               ),
                             ),
                           )
                         : Container(),
                     Center(
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          var nav = await Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart()));
+
+                          if (nav != null) {
+                            products.getCartData();
+                          }
+                        },
                         icon: const Icon(Icons.shopping_cart),
                       ),
                     ),
@@ -234,7 +241,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                                   ),
                                                   products.vList[index].stock == "instock"
                                                       ? Text(
-                                                          "Min Qty :${products.vList[index].minQty} pcs",
+                                                          "Min Qty :${products.vList[index].minQty.toString()} pcs",
                                                           style: AppFonts.regularBlack,
                                                           maxLines: 2,
                                                           overflow: TextOverflow.ellipsis,
@@ -272,34 +279,78 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                             children: [
                                               InkWell(
                                                 onTap: () {
-                                                  setState(() {
-                                                    if (products.vList[index].qty == 0) {
-                                                    } else {
-                                                      int? availableStock = products.vList[index].availableStock;
-                                                      if (availableStock == 0) {
+                                                  int? availableStock = products.vList[index].availableStock;
+                                                  if (availableStock == 0) {
+                                                  } else {
+                                                    if (products.vList[index].qty! != 0) {
+                                                      var filteredList = products.cartList.where((val) => val.id == products.vList[index].id);
+                                                      List<AddToCartModel> currentCartItem = List.from(filteredList);
+
+                                                      if (currentCartItem.isNotEmpty) {
+                                                        products.vList[index].qty =
+                                                            currentCartItem[0].productQty! - int.parse(products.vList[index].minQty.toString());
                                                       } else {
-                                                        if (products.vList[index].qty! < availableStock!) {
-                                                          products.vList[index].qty =
-                                                              products.vList[index].qty! - int.parse(products.vList[index].minQty ?? "");
+                                                        products.vList[index].qty =
+                                                            products.vList[index].qty! - int.parse(products.vList[index].minQty.toString());
+                                                      }
 
-                                                          AddToCartModel request = AddToCartModel(
-                                                            id: products.vList[index].id ?? 0,
-                                                            productQty: products.vList[index].qty,
-                                                          );
+                                                      AddToCartModel request = AddToCartModel(
+                                                        id: products.vList[index].id ?? 0,
+                                                        productQty: products.vList[index].qty,
+                                                        image: products.vList[index].image ??
+                                                            "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
+                                                        qty: products.vList[index].qty,
+                                                        name: products.vList[index].name,
+                                                        pCategory: products.vList[index].pCategory ?? "",
+                                                        price: double.parse(products.vList[index].price.toString()),
+                                                      );
 
-                                                          if (products.cartList.isEmpty) {
-                                                            products.addToCart(request);
-                                                          } else {
-                                                            var target = products.cartList.firstWhere((item) => item.id == products.vList[index].id);
-                                                            if (target.productQty == 0) {
-                                                            } else {
-                                                              target.productQty = (target.productQty ?? 0) - 1;
-                                                            }
+                                                      if (products.cartList.isEmpty) {
+                                                        products.cartList.add(request);
+                                                        products.setCartData(products.cartList);
+                                                      } else {
+                                                        bool isFound = false;
+                                                        for (var i = 0; i < products.cartList.length; ++i) {
+                                                          if (products.cartList[i].id == products.vList[index].id) {
+                                                            isFound = true;
+                                                            setState(() {
+                                                              products.cartList[i].productQty = products.vList[index].qty!;
+                                                            });
+                                                            products.setCartData(products.cartList);
+                                                            break;
                                                           }
                                                         }
+                                                        if (!isFound) {
+                                                          setState(() {
+                                                            products.cartList.add(request);
+                                                          });
+                                                          products.setCartData(products.cartList);
+                                                        }
                                                       }
+                                                    } else {
+                                                      var filteredList = products.cartList.where((val) => val.id == products.vList[index].id);
+                                                      List<AddToCartModel> currentCartItem = List.from(filteredList);
+                                                      if (currentCartItem.isNotEmpty) {
+                                                        products.vList[index].qty =
+                                                            currentCartItem[0].productQty! - int.parse(products.vList[index].minQty.toString());
+                                                      } else {
+                                                        products.vList[index].qty =
+                                                            products.vList[index].qty! - int.parse(products.vList[index].minQty.toString());
+                                                      }
+
+                                                      AddToCartModel request = AddToCartModel(
+                                                        id: products.vList[index].id ?? 0,
+                                                        productQty: products.vList[index].qty,
+                                                        image: products.vList[index].image ??
+                                                            "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
+                                                        qty: products.vList[index].qty,
+                                                        name: products.vList[index].name,
+                                                        pCategory: products.vList[index].pCategory ?? "",
+                                                        price: double.parse(products.vList[index].price.toString()),
+                                                      );
+                                                      products.cartList.remove(request);
                                                     }
-                                                  });
+                                                  }
                                                 },
                                                 child: const Icon(
                                                   Icons.remove,
@@ -311,34 +362,62 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                                                child: Text("${products.vList[index].qty}"),
+                                                child: products.currentCartItem.isNotEmpty
+                                                    ? Text(products.getCurrentQty(int.parse(products.vList[index].toString())).toString())
+                                                    : Text("${products.vList[index].qty}"),
                                               ),
                                               InkWell(
                                                 onTap: () {
-                                                  setState(
-                                                    () {
-                                                      int? availableStock = products.vList[index].availableStock;
-                                                      if (availableStock == 0) {
+                                                  int? availableStock = products.vList[index].availableStock;
+                                                  if (availableStock == 0) {
+                                                  } else {
+                                                    if (products.vList[index].qty! < availableStock!) {
+                                                      var filteredList = products.cartList.where((val) => val.id == products.vList[index].id);
+                                                      List<AddToCartModel> currentCartItem = List.from(filteredList);
+
+                                                      if (currentCartItem.isNotEmpty) {
+                                                        products.vList[index].qty =
+                                                            currentCartItem[0].productQty! + int.parse(products.vList[index].minQty.toString());
                                                       } else {
-                                                        if (products.vList[index].qty! < availableStock!) {
-                                                          products.vList[index].qty =
-                                                              products.vList[index].qty! + int.parse(products.vList[index].minQty ?? "");
+                                                        products.vList[index].qty =
+                                                            products.vList[index].qty! + int.parse(products.vList[index].minQty.toString());
+                                                      }
 
-                                                          AddToCartModel request = AddToCartModel(
-                                                            id: products.vList[index].id ?? 0,
-                                                            productQty: products.vList[index].qty,
-                                                          );
+                                                      AddToCartModel request = AddToCartModel(
+                                                        id: products.vList[index].id ?? 0,
+                                                        productQty: products.vList[index].qty,
+                                                        image: products.vList[index].image ??
+                                                            "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
+                                                        qty: products.vList[index].qty,
+                                                        name: products.vList[index].name,
+                                                        pCategory: products.vList[index].pCategory ?? "",
+                                                        price: double.parse(products.vList[index].price.toString()),
+                                                      );
 
-                                                          if (products.cartList.isEmpty) {
-                                                            products.addToCart(request);
-                                                          } else {
-                                                            var target = products.cartList.firstWhere((item) => item.id == products.vList[index].id);
-                                                            target.productQty = (target.productQty ?? 0) + 1;
+                                                      if (products.cartList.isEmpty) {
+                                                        products.cartList.add(request);
+                                                        products.setCartData(products.cartList);
+                                                      } else {
+                                                        bool isFound = false;
+                                                        for (var i = 0; i < products.cartList.length; ++i) {
+                                                          if (products.cartList[i].id == products.vList[index].id) {
+                                                            isFound = true;
+                                                            setState(() {
+                                                              products.cartList[i].productQty = products.vList[index].qty!;
+                                                            });
+                                                            products.setCartData(products.cartList);
+                                                            break;
                                                           }
                                                         }
+                                                        if (!isFound) {
+                                                          setState(() {
+                                                            products.cartList.add(request);
+                                                          });
+                                                          products.setCartData(products.cartList);
+                                                        }
                                                       }
-                                                    },
-                                                  );
+                                                    }
+                                                  }
                                                 },
                                                 child: const Icon(
                                                   Icons.add,
@@ -466,6 +545,8 @@ class ProductsDetailsModel extends ChangeNotifier {
   Map<String, dynamic>? mainProductsJsonData;
   List<VariantProducts> vList = [];
   List<RelatedProducts> rList = [];
+  List<AddToCartModel> cartList = [];
+  List<AddToCartModel> currentCartItem = [];
 
   List<int> variationProductsId = [];
   List<int> relatedProductsId = [];
@@ -473,8 +554,25 @@ class ProductsDetailsModel extends ChangeNotifier {
 
   bool readMore = false;
   double mainTotal = 0;
-  List<AddToCartModel> cartList = [];
+
   final CarouselController carouselController = CarouselController();
+
+  setCartData(List<AddToCartModel> list) async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String strData = json.encode(list);
+    preferences.setString(SharedPrefConstant.CART_LIST, strData);
+  }
+
+  getCartData() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String? strData = (preferences.getString(SharedPrefConstant.CART_LIST) ?? "");
+    if (strData != "") {
+      var jsonData = json.decode(strData);
+      var list = List<dynamic>.from(jsonData);
+      cartList = list.map((e) => AddToCartModel.fromJson(e)).toList();
+      notifyListeners();
+    }
+  }
 
   getProductsDetails(String productId, BuildContext context) async {
     showDialog(context: context, builder: (context) => const LoadingDialog());
@@ -505,6 +603,7 @@ class ProductsDetailsModel extends ChangeNotifier {
           break;
         }
       }
+
       VariantProducts products = VariantProducts(
         id: jsonData["id"],
         name: jsonData["name"].toString(),
@@ -513,10 +612,18 @@ class ProductsDetailsModel extends ChangeNotifier {
         price: jsonData["price"].toString(),
         stock: jsonData["stock_status"].toString(),
         availableStock: jsonData["stock_quantity"] ?? 0,
+        image: jsonData["images"][0]["src"] ?? "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
+        pCategory: jsonData["categories"].isNotEmpty ? jsonData["categories"][0]["name"] : "",
       );
       vList.add(products);
       notifyListeners();
     } else {}
+  }
+
+  int getCurrentQty(int index) {
+    var filteredList = cartList.where((val) => val.id == vList[index].id);
+    currentCartItem = List.from(filteredList);
+    return currentCartItem[0].productQty ?? 0;
   }
 
   getRelatedProductsDetails(String productId, BuildContext context) async {
@@ -585,21 +692,5 @@ class ProductsDetailsModel extends ChangeNotifier {
       readMore = true;
       notifyListeners();
     }
-  }
-
-  addToCart(AddToCartModel addToCartModel) async {
-    cartList.add(addToCartModel);
-    notifyListeners();
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var stringList = json.encode(cartList);
-    sharedPreferences.setString(SharedPrefConstant.CART_LIST, stringList);
-  }
-
-  removeToCart(AddToCartModel addToCartModel) async {
-    cartList.remove(addToCartModel);
-    notifyListeners();
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var stringList = json.encode(cartList);
-    sharedPreferences.setString(SharedPrefConstant.CART_LIST, stringList);
   }
 }

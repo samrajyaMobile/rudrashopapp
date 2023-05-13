@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rudrashop/pages/addresses.dart';
 import 'package:rudrashop/pages/all_category.dart';
 
 import 'package:rudrashop/pages/dashboard.dart';
@@ -66,19 +67,18 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const AllCategory(),
+          builder: (context) => const AddressScreen(),
         ),
       );
     } else {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const AllCategory(),
+          builder: (context) => const AddressScreen(),
         ),
       );
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
