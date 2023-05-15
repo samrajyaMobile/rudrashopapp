@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:rudrashop/http/model/add_to_cart_model.dart';
-import 'package:rudrashop/http/model/variations_products.dart';
 import 'package:rudrashop/pages/addresses.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:rudrashop/utils/app_constant.dart';
@@ -19,9 +18,7 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   List<AddToCartModel> cartList = [];
-
   double? grandTotal;
-
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -188,7 +185,7 @@ class _CartState extends State<Cart> {
                                 child: SizedBox(
                                   child: ElevatedButton(
                                     style: ButtonStyle(
-                                      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
+                                      shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
                                       backgroundColor: MaterialStateProperty.all(AppColor.mainColor),
                                       overlayColor: MaterialStateProperty.all(Colors.white10),
                                     ),

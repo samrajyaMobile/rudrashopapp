@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rudrashop/pages/addresses.dart';
 import 'package:rudrashop/pages/all_category.dart';
-
 import 'package:rudrashop/pages/dashboard.dart';
+import 'package:rudrashop/pages/home.dart';
 import 'package:rudrashop/pages/login_screen.dart';
-
+import 'package:rudrashop/pages/my_biz.dart';
+import 'package:rudrashop/pages/orders_list.dart';
 import 'package:rudrashop/pages/products_details.dart';
-import 'package:rudrashop/pages/related_products_details.dart';
+import 'package:rudrashop/pages/profile.dart';
 import 'package:rudrashop/pages/sub_categoty.dart';
+import 'package:rudrashop/utils/app_colors.dart';
 import 'package:rudrashop/utils/app_constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,7 +31,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => LoginModel()),
         ChangeNotifierProvider(create: (context) => SubCategoryModel()),
         ChangeNotifierProvider(create: (context) => ProductsDetailsModel()),
-        ChangeNotifierProvider(create: (context) => RelatedProductsModel()),
+        ChangeNotifierProvider(create: (context) => HomeModel()),
+        ChangeNotifierProvider(create: (context) => AllCategoryModel()),
+        ChangeNotifierProvider(create: (context) => ProfileModel()),
+        ChangeNotifierProvider(create: (context) => OrdersModal()),
+        ChangeNotifierProvider(create: (context) => AddressModel()),
+        ChangeNotifierProvider(create: (context) => MyBizModel()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -38,6 +45,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: const SplashScreen(),
+        routes: {
+          "/dashboard" : (context) => const Dashboard(),
+        },
       ),
     );
   }
@@ -67,24 +77,34 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const AddressScreen(),
+          builder: (context) => const Dashboard(),
         ),
       );
     } else {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const AddressScreen(),
+          builder: (context) => const LoginScreen(),
         ),
       );
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: AppColor.mainColor,
         body: Column(
-          children: const [],
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+                child: Image.asset(
+              "assets/images/logoimage.png",
+              scale: 2,
+            ))
+          ],
         ),
       ),
     );

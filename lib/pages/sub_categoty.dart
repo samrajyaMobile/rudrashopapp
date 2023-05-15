@@ -79,7 +79,7 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
                                                 ["id"]
                                             .toString(),
                                         categoryName: subCategory.list[index]
-                                            ["name"],
+                                            ["name"], tag: '',
                                       )));
                         },
                         child: Padding(

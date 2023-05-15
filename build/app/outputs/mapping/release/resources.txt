@@ -2071,6 +2071,12 @@ Marking id:line3:2131034167 used because it matches string pool constant line
 @layout/toast_custom : reachable=true
     @drawable/corner
 @mipmap/ic_launcher : reachable=true
+    @mipmap/ic_launcher_background
+    @mipmap/ic_launcher_foreground
+    @mipmap/ic_launcher_monochrome
+@mipmap/ic_launcher_background : reachable=false
+@mipmap/ic_launcher_foreground : reachable=false
+@mipmap/ic_launcher_monochrome : reachable=false
 @string/common_google_play_services_enable_button : reachable=true
 @string/common_google_play_services_enable_text : reachable=true
 @string/common_google_play_services_enable_title : reachable=true

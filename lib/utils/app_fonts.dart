@@ -4,7 +4,7 @@ import 'package:rudrashop/utils/app_colors.dart';
 
 class AppFonts {
 
-  static TextStyle title = TextStyle(color: AppColor.black1, fontFamily: "black", fontSize: 35);
+  static TextStyle title = TextStyle(color: AppColor.black1, fontFamily: "black", fontSize: 30);
   static TextStyle subTitle = TextStyle(color: AppColor.black1, fontFamily: "black", fontSize: 24);
   static TextStyle textFieldLabelGary = TextStyle(color: AppColor.black3, fontFamily: "regular", fontSize: 15);
   static TextStyle textFieldLabelBlack = TextStyle(color: AppColor.black1, fontFamily: "regular", fontSize: 15);

@@ -1,30 +1,154 @@
 [
     {
-        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.example.rudrashopapp-main-8:/mipmap-hdpi/ic_launcher.png"
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-hdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-hdpi\\ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-mdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-mdpi\\ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "com.example.rudrashopapp-main-8:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
         "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-mdpi_ic_launcher.png.flat",
         "source": "com.example.rudrashopapp-main-8:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.rudrashopapp-merged_res-14:/drawable-v21_launch_background.xml.flat",
-        "source": "com.example.rudrashopapp-main-8:/drawable-v21/launch_background.xml"
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-xxhdpi/ic_launcher_foreground.png"
     },
     {
-        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.example.rudrashopapp-main-8:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-hdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-hdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-mdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-mdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xxxhdpi\\ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xhdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-xhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\drawable_launch_background.xml.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\drawable\\launch_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\drawable-v21_launch_background.xml.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\drawable-v21\\launch_background.xml"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-xxhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-mdpi/ic_launcher_foreground.png"
     },
     {
         "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "com.example.rudrashopapp-main-8:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.rudrashopapp-merged_res-14:/drawable_launch_background.xml.flat",
-        "source": "com.example.rudrashopapp-main-8:/drawable/launch_background.xml"
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xhdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xhdpi\\ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-xxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-xxhdpi\\ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-merged_res-14:\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\w3nuts\\.gradle\\daemon\\7.5\\com.example.rudrashopapp-main-8:\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xxxhdpi_ic_launcher_monochrome.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-xxxhdpi/ic_launcher_monochrome.png"
+    },
+    {
+        "merged": "com.example.rudrashopapp-merged_res-14:/mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "com.example.rudrashopapp-main-8:/mipmap-xxxhdpi/ic_launcher_foreground.png"
     }
 ]

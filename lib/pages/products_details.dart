@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:rudrashop/http/model/add_to_cart_model.dart';
 import 'package:rudrashop/http/model/variations_products.dart';
 import 'package:rudrashop/pages/cart.dart';
-import 'package:rudrashop/pages/related_products_details.dart';
+
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:rudrashop/utils/app_constant.dart';
 import 'package:rudrashop/utils/app_dialog.dart';
@@ -452,7 +452,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                             itemBuilder: (context, int index) {
                               return InkWell(
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => RelatedProductsDetails(pId: products.rList[index].id)));
+                                 // Navigator.push(context, MaterialPageRoute(builder: (context) => RelatedProductsDetails(pId: products.rList[index].id)));
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -562,6 +562,8 @@ class ProductsDetailsModel extends ChangeNotifier {
     String strData = json.encode(list);
     preferences.setString(SharedPrefConstant.CART_LIST, strData);
   }
+
+
 
   getCartData() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();

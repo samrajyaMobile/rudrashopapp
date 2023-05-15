@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rudrashop/http/model/login_response.dart';
 import 'package:rudrashop/pages/dashboard.dart';
 import 'package:rudrashop/pages/signup.dart';
@@ -31,98 +32,107 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Consumer<LoginModel>(builder: (context, login, _) {
         return Scaffold(
-          backgroundColor: AppColor.mainBackground,
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(25),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    child: Text("Login", style: AppFonts.title),
+          resizeToAvoidBottomInset: true,
+          backgroundColor: AppColor.white,
+          body: Padding(
+            padding: const EdgeInsets.all(25),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 20),
+                  child: Text("Enter Login Details",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                      )),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColor.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.grey),
                   ),
-                  Container(
-                    decoration: BoxDecoration(color: AppColor.white),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: TextFormField(
-                        controller: login._email,
-                        style: AppFonts.textFieldBlack,
-                        decoration: InputDecoration(
-                          label: const Text("E-mail"),
-                          labelStyle: AppFonts.textFieldLabelGary,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                        ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: TextFormField(
+                      controller: login._email,
+                      style: AppFonts.textFieldBlack,
+                      decoration: InputDecoration(
+                        label: const Text("E-mail"),
+                        labelStyle: AppFonts.textFieldLabelGary,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: AppColor.white,
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.grey),
                   ),
-                  Container(
-                    decoration: BoxDecoration(color: AppColor.white),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: TextFormField(
-                        controller: login._password,
-                        obscureText: true,
-                        style: AppFonts.textFieldBlack,
-                        decoration: InputDecoration(
-                          label: const Text("Password"),
-                          labelStyle: AppFonts.textFieldLabelGary,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                        ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: TextFormField(
+                      controller: login._password,
+                      obscureText: true,
+                      style: AppFonts.textFieldBlack,
+                      decoration: InputDecoration(
+                        label: const Text("Password"),
+                        labelStyle: AppFonts.textFieldLabelGary,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignupScreen()));
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          "Don't have an account?",
-                          style: AppFonts.textFieldBlack,
-                        ),
-                        Image.asset(
-                          "assets/images/arrow_right.png",
-                          scale: 2,
-                        )
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                          shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
-                          backgroundColor: MaterialStateProperty.all(AppColor.mainColor),
-                          overlayColor: MaterialStateProperty.all(Colors.white10),
-                        ),
-                        onPressed: () {
-                          login.validator(context);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(16),
-                          child: Text(
-                            "LOGIN",
-                            style: AppFonts.textFieldWhite,
-                          ),
-                        )),
-                  ),
-                ],
-              ),
+                ),
+                const Spacer(),
+                (login._email.text.isNotEmpty)
+                    ? SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                              backgroundColor: MaterialStateProperty.all(AppColor.mainColor),
+                              overlayColor: MaterialStateProperty.all(Colors.white10),
+                            ),
+                            onPressed: () {
+                              login.validator(context);
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.all(16),
+                              child: Text(
+                                "Login",
+                              ),
+                            )),
+                      )
+                    : SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                              backgroundColor: MaterialStateProperty.all(Colors.grey),
+                              overlayColor: MaterialStateProperty.all(Colors.white10),
+                            ),
+                            onPressed: () {
+                              login.validator(context);
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.all(16),
+                              child: Text(
+                                "Login",
+                              ),
+                            )),
+                      ),
+              ],
             ),
           ),
         );
@@ -150,28 +160,36 @@ class LoginModel extends ChangeNotifier {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String uEmail = _email.text.toLowerCase().trim();
     String uPassword = _password.text.trim();
-    String url = AppConstant.GET_LOGIN;
 
-    var response = await http.post(Uri.parse("http://samrajya.co.in/index.php/wp-json/your-namespace/v1/user-login"), body: {
-      "email": uEmail,
+    var map = {
+      "username": uEmail,
       "password": uPassword,
-    });
+    };
+
+    var response = await http.post(
+        Uri.parse(
+            "https://samrajya.co.in/index.php/wp-json/custom-woocommerce-api/v1/login?consumer_key=ck_6fec19dc34310bf11f6a020ec2526f0075cdae8e&consumer_secret=cs_80ceaf6f10850003191baaf39da36f7ae1dcf637"),
+        body: json.encode(map));
 
     if (response.statusCode == 200) {
       Navigator.pop(context);
       var jsonData = json.decode(response.body);
-
-      if (jsonData["success"] ?? false) {
-        sharedPreferences.setBool(SharedPrefConstant.U_LOGIN, jsonData["success"]);
+      if (jsonData["status"] == "success") {
+        sharedPreferences.setBool(SharedPrefConstant.U_LOGIN, true);
         sharedPreferences.setString(SharedPrefConstant.U_ID, jsonData["user_id"].toString());
-        sharedPreferences.setString(SharedPrefConstant.U_EMAIL, jsonData["user_email"].toString());
-        sharedPreferences.setString(SharedPrefConstant.U_NAME, jsonData["display_name"].toString());
-        sharedPreferences.setString(SharedPrefConstant.U_MO_NUMBER, jsonData["billing_data"]["phone"].toString());
-        sharedPreferences.setString(SharedPrefConstant.U_ADDRESS1, jsonData["billing_data"]["address_1"].toString());
-        sharedPreferences.setString(SharedPrefConstant.U_ADDRESS2, jsonData["billing_data"]["address_2"].toString());
-        sharedPreferences.setString(SharedPrefConstant.U_CITY, jsonData["billing_data"]["city"].toString());
-        sharedPreferences.setString(SharedPrefConstant.U_PIN, jsonData["billing_data"]["postcode"].toString());
-        sharedPreferences.setString(SharedPrefConstant.U_STATE, jsonData["billing_data"]["state"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_EMAIL, jsonData["email_address"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_FIRST_NAME, jsonData["first_name"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_LAST_NAME, jsonData["last_name"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_GST, jsonData["billing_gst"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_BUSINESS_NAME, jsonData["company_name"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_MO_NUMBER, jsonData["mobile_phone"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_ADDRESS1, jsonData["address_1"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_ADDRESS2, jsonData["address_2"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_CITY, jsonData["city"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_PIN, jsonData["pincode"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_STATE, jsonData["state"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_AVATAR, jsonData["profile_picture"].toString());
+        sharedPreferences.setString(SharedPrefConstant.U_DISPLAY_NAME, jsonData["display_name"].toString());
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
