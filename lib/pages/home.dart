@@ -62,15 +62,24 @@ class _HomeState extends State<Home> {
                                 Color(0xffC22F37),
                               ]),
                             ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                "Shop by Category",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.local_fire_department,
+                                    color: Colors.orange[300],
+                                  ),
+                                  const Text(
+                                    "Shop by Category",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -83,7 +92,7 @@ class _HomeState extends State<Home> {
                                 ),
                               );
                             },
-                            child:  Text(
+                            child: Text(
                               "View All",
                               style: TextStyle(
                                 fontSize: 12,
@@ -111,7 +120,7 @@ class _HomeState extends State<Home> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) => SubCategoryScreen(
-                                      categoryName:home.allCategoryList[index]["name"],
+                                      categoryName: home.allCategoryList[index]["name"],
                                       categoryId: home.allCategoryList[index]["id"].toString(),
                                     ),
                                   ),
@@ -196,15 +205,24 @@ class _HomeState extends State<Home> {
                                 Color(0xffC22F37),
                               ]),
                             ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                "Featured",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.local_fire_department,
+                                    color: Colors.orange[300],
+                                  ),
+                                  const Text(
+                                    "Featured",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -219,7 +237,7 @@ class _HomeState extends State<Home> {
                                             tag: 'featured',
                                           )));
                             },
-                            child:  Text(
+                            child: Text(
                               "View All",
                               style: TextStyle(
                                 fontSize: 12,
@@ -366,7 +384,10 @@ class _HomeState extends State<Home> {
                         children: [
                           Container(
                             decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomLeft: Radius.circular(20)),
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomLeft: Radius.circular(20),
+                              ),
                               gradient: LinearGradient(colors: [
                                 Color(0xffce1c36),
                                 Color(0xffFD5554),
@@ -377,30 +398,41 @@ class _HomeState extends State<Home> {
                                 Color(0xffC22F37),
                               ]),
                             ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                "New Arrivals",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.local_fire_department,
+                                    color: Colors.orange[300],
+                                  ),
+                                  const Text(
+                                    "New Arrivals",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                           InkWell(
                             onTap: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Products(
-                                            categoryId: "0",
-                                            categoryName: "New Arrivals",
-                                            tag: 'newArrivals',
-                                          )));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Products(
+                                    categoryId: "0",
+                                    categoryName: "New Arrivals",
+                                    tag: 'newArrivals',
+                                  ),
+                                ),
+                              );
                             },
-                            child:  Text(
+                            child: Text(
                               "View All",
                               style: TextStyle(
                                 fontSize: 12,
@@ -504,10 +536,7 @@ class _HomeState extends State<Home> {
                                                 )
                                               : Center(
                                                   child: Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(4),
-                                                      color: Colors.red
-                                                    ),
+                                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: Colors.red),
                                                     child: const Padding(
                                                       padding: EdgeInsets.all(4.0),
                                                       child: Text(
@@ -562,15 +591,24 @@ class _HomeState extends State<Home> {
                                 Color(0xffC22F37),
                               ]),
                             ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                "Mobile Accessories",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.local_fire_department,
+                                    color: Colors.orange[300],
+                                  ),
+                                  const Text(
+                                    "Mobile Accessories",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),

@@ -1,0 +1,15 @@
+io.flutter.plugins.firebase.analytics.firebase_analytics-jetified-window-java-1.0.0-beta04-0 C:\Users\w3nuts\.gradle\caches\transforms-3\1d9617902bb85503bf2568ae384cbe75\transformed\jetified-window-java-1.0.0-beta04\res
+io.flutter.plugins.firebase.analytics.firebase_analytics-core-1.6.0-1 C:\Users\w3nuts\.gradle\caches\transforms-3\4f2582b22bc353f3bce4129ee33705cc\transformed\core-1.6.0\res
+io.flutter.plugins.firebase.analytics.firebase_analytics-jetified-firebase-common-20.3.2-2 C:\Users\w3nuts\.gradle\caches\transforms-3\4f847da1a5dbd082afa16bf79a95cc45\transformed\jetified-firebase-common-20.3.2\res
+io.flutter.plugins.firebase.analytics.firebase_analytics-jetified-annotation-experimental-1.1.0-3 C:\Users\w3nuts\.gradle\caches\transforms-3\6773e2fa09aade1894e2923a0599ef6b\transformed\jetified-annotation-experimental-1.1.0\res
+io.flutter.plugins.firebase.analytics.firebase_analytics-jetified-play-services-basement-18.1.0-4 C:\Users\w3nuts\.gradle\caches\transforms-3\677defbf5bd8771000d6dffc4b2c146b\transformed\jetified-play-services-basement-18.1.0\res
+io.flutter.plugins.firebase.analytics.firebase_analytics-jetified-window-1.0.0-beta04-5 C:\Users\w3nuts\.gradle\caches\transforms-3\8e241d754e35b225a483f3c8a852e22f\transformed\jetified-window-1.0.0-beta04\res
+io.flutter.plugins.firebase.analytics.firebase_analytics-main-6 C:\Users\w3nuts\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_analytics-10.4.1\android\src\main\res
+io.flutter.plugins.firebase.analytics.firebase_analytics-release-7 C:\Users\w3nuts\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_analytics-10.4.1\android\src\release\res
+io.flutter.plugins.firebase.analytics.firebase_analytics-pngs-8 D:\rudrashopapp\build\firebase_analytics\generated\res\pngs\release
+io.flutter.plugins.firebase.analytics.firebase_analytics-resValues-9 D:\rudrashopapp\build\firebase_analytics\generated\res\resValues\release
+io.flutter.plugins.firebase.analytics.firebase_analytics-rs-10 D:\rudrashopapp\build\firebase_analytics\generated\res\rs\release
+io.flutter.plugins.firebase.analytics.firebase_analytics-mergeReleaseResources-11 D:\rudrashopapp\build\firebase_analytics\intermediates\incremental\release\mergeReleaseResources\merged.dir
+io.flutter.plugins.firebase.analytics.firebase_analytics-mergeReleaseResources-12 D:\rudrashopapp\build\firebase_analytics\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+io.flutter.plugins.firebase.analytics.firebase_analytics-merged_res-13 D:\rudrashopapp\build\firebase_analytics\intermediates\merged_res\release
+io.flutter.plugins.firebase.analytics.firebase_analytics-packaged_res-14 D:\rudrashopapp\build\firebase_core\intermediates\packaged_res\release

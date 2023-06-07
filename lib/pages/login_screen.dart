@@ -2,9 +2,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rudrashop/http/model/login_response.dart';
 import 'package:rudrashop/pages/dashboard.dart';
-import 'package:rudrashop/pages/signup.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:rudrashop/utils/app_constant.dart';
 import 'package:rudrashop/utils/app_dialog.dart';
@@ -23,7 +21,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {});
     super.initState();
   }
 
@@ -95,6 +92,43 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const Spacer(),
+                const Row(
+                  children: [
+                    Text(
+                      "By continuing, you agree to",
+                      style: TextStyle(fontSize: 10),
+                    ),
+                    Text("Terms of use", style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700)),
+                    Text(" & ", style: TextStyle(fontSize: 10)),
+                    Text("Privacy policy", style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700)),
+                  ],
+                ),
+                const Divider(),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      "assets/images/safe.svg",
+                      height: 30,
+                      width: 30,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    SvgPicture.asset(
+                      "assets/images/datasafe.svg",
+                      height: 30,
+                      width: 30,
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 (login._email.text.isNotEmpty)
                     ? SizedBox(
                         width: MediaQuery.of(context).size.width,

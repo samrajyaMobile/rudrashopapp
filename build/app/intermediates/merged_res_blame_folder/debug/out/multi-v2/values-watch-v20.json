@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.rudrashopapp-mergeDebugResources-12:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.app.samrajyab2b.app-mergeDebugResources-17:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\68e685146462835443dc57aea9b8b87a\\transformed\\jetified-play-services-auth-20.4.1\\res\\values-watch-v20\\values.xml",
+                    "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\a8362ffa9496b005c81bbc4d88992ee4\\transformed\\jetified-play-services-auth-20.4.1\\res\\values-watch-v20\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",

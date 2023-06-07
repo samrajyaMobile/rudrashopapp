@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:googleapis/dfareporting/v3_4.dart';
 import 'package:provider/provider.dart';
@@ -54,6 +55,8 @@ class _ProductsDetailsState extends State<ProductsDetails> {
 
   @override
   Widget build(BuildContext context) {
+    double widget = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Consumer<ProductsDetailsModel>(
         builder: (context, products, _) {
@@ -125,73 +128,71 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                             : Container(),
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          color: AppColor.black2,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              "Add minimum pcs to purchase",
-                              style: AppFonts.semiBoldWhite,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Container(
                           color: AppColor.white,
                           child: Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  products.mainProductsJsonData?["name"] ?? "Product Name",
-                                  style: AppFonts.semiBoldBlack,
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Text(
-                                  "Product Description : ",
-                                  style: AppFonts.textFieldLabelGary,
-                                ),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                products.readMore
-                                    ? Text(
-                                        _parseHtmlString(products.mainProductsJsonData?["description"] ?? ""),
-                                      )
-                                    : Text(
-                                        _parseHtmlString(products.mainProductsJsonData?["description"] ?? ""),
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                        style: TextStyle(color: AppColor.black2),
-                                      ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: InkWell(
-                                      onTap: () {
-                                        products.readMoreTrueFalse();
-                                      },
-                                      child: Container(
-                                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.black5),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            products.readMore ? "Read Less" : "Read More",
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              products.mainProductsJsonData?["name"] ?? "Product Name",
+                              style: const TextStyle(fontWeight: FontWeight.w700),
                             ),
                           ),
+                        ),
+                        Container(color: Colors.white, child: const Divider()),
+                        InkWell(
+                          onTap: () {
+                            products.readMoreTrueFalse();
+                          },
+                          child: Container(
+                            color: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      children: [
+                                        Container(
+                                          decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.lightBlueAccent),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(4),
+                                            child: Icon(
+                                              CupertinoIcons.gear_alt_fill,
+                                              color: Colors.white,
+                                              size: 15,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                        const Text(
+                                          "Specification",
+                                          style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.w700),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  products.readMore ? const Icon(Icons.arrow_drop_up) : const Icon(Icons.arrow_drop_down),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        products.readMore
+                            ? Container(
+                                width: MediaQuery.of(context).size.width,
+                                color: Colors.white,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    _parseHtmlString(products.mainProductsJsonData?["description"] ?? ""),
+                                    style: const TextStyle(fontSize: 12),
+                                  ),
+                                ),
+                              )
+                            : Container(),
+                        const SizedBox(
+                          height: 10,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -208,7 +209,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Container(
-                                decoration: BoxDecoration(color: AppColor.white, borderRadius: BorderRadius.circular(5)),
+                                decoration: const BoxDecoration(color: Colors.white),
                                 child: Row(
                                   children: [
                                     Expanded(
@@ -247,12 +248,15 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                                           overflow: TextOverflow.ellipsis,
                                                         )
                                                       : Container(
-                                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.red),
-                                                          child: Padding(
-                                                            padding: const EdgeInsets.all(8.0),
+                                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: AppColor.red),
+                                                          child: const Padding(
+                                                            padding: EdgeInsets.all(4.0),
                                                             child: Text(
-                                                              "Out of stock",
-                                                              style: AppFonts.semiBoldWhite12,
+                                                              "Out Of Stock",
+                                                              style: TextStyle(
+                                                                color: Colors.white,
+                                                                fontSize: 12,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -436,10 +440,31 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                           },
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                          child: Text(
-                            "Related Products :",
-                            style: AppFonts.textFieldBlack,
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(topRight: Radius.circular(20), bottomLeft: Radius.circular(20)),
+                              gradient: LinearGradient(colors: [
+                                Color(0xffce1c36),
+                                Color(0xffFD5554),
+                                Color(0xffC22F37),
+                                Color(0xff7D0012),
+                                Color(0xffce1c36),
+                                Color(0xffFD5554),
+                                Color(0xffC22F37),
+                              ]),
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                "Related Products",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -452,7 +477,7 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                             itemBuilder: (context, int index) {
                               return InkWell(
                                 onTap: () {
-                                 // Navigator.push(context, MaterialPageRoute(builder: (context) => RelatedProductsDetails(pId: products.rList[index].id)));
+                                  // Navigator.push(context, MaterialPageRoute(builder: (context) => RelatedProductsDetails(pId: products.rList[index].id)));
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -499,12 +524,15 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                                               ),
                                               (products.rList[index].stock == "outofstock")
                                                   ? Container(
-                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), color: AppColor.red),
-                                                      child: Padding(
-                                                        padding: const EdgeInsets.all(8.0),
+                                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: AppColor.red),
+                                                      child: const Padding(
+                                                        padding: EdgeInsets.all(4.0),
                                                         child: Text(
-                                                          "Out of stock",
-                                                          style: AppFonts.semiBoldWhite12,
+                                                          "Out Of Stock",
+                                                          style: TextStyle(
+                                                            color: Colors.white,
+                                                            fontSize: 12,
+                                                          ),
                                                         ),
                                                       ),
                                                     )
@@ -532,6 +560,41 @@ class _ProductsDetailsState extends State<ProductsDetails> {
                     ),
                   ),
                 ),
+                products.cartList.isNotEmpty
+                    ? Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
+                              backgroundColor: MaterialStateProperty.all(AppColor.mainColor),
+                              overlayColor: MaterialStateProperty.all(Colors.white10),
+                            ),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart()));
+                            },
+                            child: const Padding(
+                              padding: EdgeInsets.all(16),
+                              child: Text(
+                                "Goto Cart",
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(
+                        width: MediaQuery.of(context).size.width,
+                        color: AppColor.black2,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            "Add minimum pcs to purchase",
+                            style: AppFonts.semiBoldWhite,
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
               ],
             ),
           );
@@ -562,8 +625,6 @@ class ProductsDetailsModel extends ChangeNotifier {
     String strData = json.encode(list);
     preferences.setString(SharedPrefConstant.CART_LIST, strData);
   }
-
-
 
   getCartData() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();

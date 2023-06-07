@@ -1,0 +1,14 @@
+io.flutter.plugins.firebase.core.firebase_core-jetified-window-java-1.0.0-beta04-0 C:\Users\w3nuts\.gradle\caches\transforms-3\1d9617902bb85503bf2568ae384cbe75\transformed\jetified-window-java-1.0.0-beta04\res
+io.flutter.plugins.firebase.core.firebase_core-core-1.6.0-1 C:\Users\w3nuts\.gradle\caches\transforms-3\4f2582b22bc353f3bce4129ee33705cc\transformed\core-1.6.0\res
+io.flutter.plugins.firebase.core.firebase_core-jetified-firebase-common-20.3.2-2 C:\Users\w3nuts\.gradle\caches\transforms-3\4f847da1a5dbd082afa16bf79a95cc45\transformed\jetified-firebase-common-20.3.2\res
+io.flutter.plugins.firebase.core.firebase_core-jetified-annotation-experimental-1.1.0-3 C:\Users\w3nuts\.gradle\caches\transforms-3\6773e2fa09aade1894e2923a0599ef6b\transformed\jetified-annotation-experimental-1.1.0\res
+io.flutter.plugins.firebase.core.firebase_core-jetified-play-services-basement-18.1.0-4 C:\Users\w3nuts\.gradle\caches\transforms-3\677defbf5bd8771000d6dffc4b2c146b\transformed\jetified-play-services-basement-18.1.0\res
+io.flutter.plugins.firebase.core.firebase_core-jetified-window-1.0.0-beta04-5 C:\Users\w3nuts\.gradle\caches\transforms-3\8e241d754e35b225a483f3c8a852e22f\transformed\jetified-window-1.0.0-beta04\res
+io.flutter.plugins.firebase.core.firebase_core-main-6 C:\Users\w3nuts\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core-2.13.0\android\src\main\res
+io.flutter.plugins.firebase.core.firebase_core-release-7 C:\Users\w3nuts\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core-2.13.0\android\src\release\res
+io.flutter.plugins.firebase.core.firebase_core-pngs-8 D:\rudrashopapp\build\firebase_core\generated\res\pngs\release
+io.flutter.plugins.firebase.core.firebase_core-resValues-9 D:\rudrashopapp\build\firebase_core\generated\res\resValues\release
+io.flutter.plugins.firebase.core.firebase_core-rs-10 D:\rudrashopapp\build\firebase_core\generated\res\rs\release
+io.flutter.plugins.firebase.core.firebase_core-mergeReleaseResources-11 D:\rudrashopapp\build\firebase_core\intermediates\incremental\release\mergeReleaseResources\merged.dir
+io.flutter.plugins.firebase.core.firebase_core-mergeReleaseResources-12 D:\rudrashopapp\build\firebase_core\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+io.flutter.plugins.firebase.core.firebase_core-merged_res-13 D:\rudrashopapp\build\firebase_core\intermediates\merged_res\release

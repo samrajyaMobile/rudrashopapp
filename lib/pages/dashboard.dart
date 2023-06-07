@@ -1,14 +1,16 @@
 // ignore_for_file: use_build_context_synchronously, prefer_typing_uninitialized_variables
 import 'dart:convert';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:rudrashop/http/model/add_to_cart_model.dart';
+import 'package:rudrashop/main.dart';
 import 'package:rudrashop/pages/cart.dart';
 import 'package:rudrashop/pages/home.dart';
 import 'package:rudrashop/pages/my_biz.dart';
 
-import 'package:rudrashop/pages/settings.dart';
-import 'package:rudrashop/pages/sub_categoty.dart';
 import 'package:rudrashop/utils/app_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:rudrashop/utils/app_constant.dart';
@@ -22,6 +24,72 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    setupInteractedMessage();
+
+    FirebaseMessaging.instance
+        .getInitialMessage()
+        .then((RemoteMessage? message) async {
+      RemoteNotification? notification = message?.notification!;
+
+      print(notification != null ? notification.title : '');
+    });
+
+    FirebaseMessaging.onMessage.listen((message) async {
+      RemoteNotification? notification = message.notification;
+      AndroidNotification? android = message.notification?.android;
+
+      if (notification != null && android != null && !kIsWeb) {
+        String action = jsonEncode(message.data);
+
+        flutterLocalNotificationsPlugin!.show(
+            notification.hashCode,
+            notification.title,
+            notification.body,
+            NotificationDetails(
+              android: AndroidNotificationDetails(
+                channel!.id,
+                channel!.name,
+                priority: Priority.high,
+                importance: Importance.max,
+                setAsGroupSummary: true,
+                styleInformation: const DefaultStyleInformation(true, true),
+                largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+                channelShowBadge: true,
+                autoCancel: true,
+                icon: '@drawable/ic_launcher',
+              ),
+            ),
+            payload: action);
+      }
+      print('A new event was published!');
+    });
+
+    FirebaseMessaging.onMessageOpenedApp
+        .listen((message) => _handleMessage(message.data));
+  }
+
+  Future<dynamic> onSelectNotification(payload) async {
+    Map<String, dynamic> action = jsonDecode(payload);
+    _handleMessage(action);
+  }
+
+  Future<void> setupInteractedMessage() async {
+    await FirebaseMessaging.instance
+        .getInitialMessage()
+        .then((value) => _handleMessage(value != null ? value.data : Map()));
+  }
+
+  void _handleMessage(Map<String, dynamic> data) {
+    if (data['redirect'] == "product") {
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<DashboardModel>(
@@ -46,10 +114,6 @@ class _DashboardState extends State<Dashboard> {
                     label: "Home",
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.call),
-                    label: "Chat",
-                  ),
-                  BottomNavigationBarItem(
                     icon: Icon(Icons.card_travel),
                     label: "My Biz",
                   ),
@@ -59,7 +123,7 @@ class _DashboardState extends State<Dashboard> {
             appBar: AppBar(
               elevation: 0,
               backgroundColor: AppColor.mainColor,
-              title: Text("Samrajya"),
+              title: const Text("Samrajya"),
               actions: [
                 IconButton(
                     onPressed: () async {
@@ -85,13 +149,12 @@ class _DashboardState extends State<Dashboard> {
 }
 
 class DashboardModel extends ChangeNotifier {
-  int _currentPage = 1;
+  int _currentPage = 0;
   List<AddToCartModel> cartList = [];
 
   var pages = [
-    Home(),
-    Home(),
-    MyBiz(),
+    const Home(),
+    const MyBiz(),
   ];
   var page;
 

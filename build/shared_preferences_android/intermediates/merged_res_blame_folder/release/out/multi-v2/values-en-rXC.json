@@ -4,7 +4,7 @@
             "outputFile": "io.flutter.plugins.sharedpreferences.shared_preferences_android-mergeReleaseResources-8:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\9d13f608411ebd1b864ae55bb53a8fcc\\transformed\\core-1.6.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\4f2582b22bc353f3bce4129ee33705cc\\transformed\\core-1.6.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -19,7 +19,7 @@
             "outputFile": "io.flutter.plugins.sharedpreferences.shared_preferences_android-merged_res-10:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\9d13f608411ebd1b864ae55bb53a8fcc\\transformed\\core-1.6.0\\res\\values-en-rXC\\values-en-rXC.xml",
+                    "source": "C:\\Users\\w3nuts\\.gradle\\caches\\transforms-3\\4f2582b22bc353f3bce4129ee33705cc\\transformed\\core-1.6.0\\res\\values-en-rXC\\values-en-rXC.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

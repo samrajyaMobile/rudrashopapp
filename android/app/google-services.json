@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "842283054725",
+    "project_id": "samrajya-b2b",
+    "storage_bucket": "samrajya-b2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842283054725:android:f407aa32ce3d65c5c59bec",
+        "android_client_info": {
+          "package_name": "com.app.samrajyab2b"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842283054725-omr9s58h03llcgeeulmjs0d3jv4i8322.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7yliXytO7bO9WYaU2pP6QRx84ArYEkag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "842283054725-omr9s58h03llcgeeulmjs0d3jv4i8322.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

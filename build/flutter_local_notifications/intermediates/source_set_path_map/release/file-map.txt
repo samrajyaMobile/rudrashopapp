@@ -1,0 +1,13 @@
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-jetified-window-java-1.0.0-beta04-0 C:\Users\w3nuts\.gradle\caches\transforms-3\1d9617902bb85503bf2568ae384cbe75\transformed\jetified-window-java-1.0.0-beta04\res
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-core-1.6.0-1 C:\Users\w3nuts\.gradle\caches\transforms-3\4f2582b22bc353f3bce4129ee33705cc\transformed\core-1.6.0\res
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-jetified-annotation-experimental-1.1.0-2 C:\Users\w3nuts\.gradle\caches\transforms-3\6773e2fa09aade1894e2923a0599ef6b\transformed\jetified-annotation-experimental-1.1.0\res
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-jetified-window-1.0.0-beta04-3 C:\Users\w3nuts\.gradle\caches\transforms-3\8e241d754e35b225a483f3c8a852e22f\transformed\jetified-window-1.0.0-beta04\res
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-media-1.1.0-4 C:\Users\w3nuts\.gradle\caches\transforms-3\f2665db7bfb9b52074f5bb0aebceafab\transformed\media-1.1.0\res
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-main-5 C:\Users\w3nuts\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_local_notifications-14.0.1\android\src\main\res
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-release-6 C:\Users\w3nuts\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_local_notifications-14.0.1\android\src\release\res
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-pngs-7 D:\rudrashopapp\build\flutter_local_notifications\generated\res\pngs\release
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-resValues-8 D:\rudrashopapp\build\flutter_local_notifications\generated\res\resValues\release
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-rs-9 D:\rudrashopapp\build\flutter_local_notifications\generated\res\rs\release
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-mergeReleaseResources-10 D:\rudrashopapp\build\flutter_local_notifications\intermediates\incremental\release\mergeReleaseResources\merged.dir
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-mergeReleaseResources-11 D:\rudrashopapp\build\flutter_local_notifications\intermediates\incremental\release\mergeReleaseResources\stripped.dir
+com.dexterous.flutterlocalnotifications.flutter_local_notifications-merged_res-12 D:\rudrashopapp\build\flutter_local_notifications\intermediates\merged_res\release

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">842283054725-omr9s58h03llcgeeulmjs0d3jv4i8322.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">842283054725</string>
+    <string name="google_api_key" translatable="false">AIzaSyC7yliXytO7bO9WYaU2pP6QRx84ArYEkag</string>
+    <string name="google_app_id" translatable="false">1:842283054725:android:f407aa32ce3d65c5c59bec</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC7yliXytO7bO9WYaU2pP6QRx84ArYEkag</string>
+    <string name="google_storage_bucket" translatable="false">samrajya-b2b.appspot.com</string>
+    <string name="project_id" translatable="false">samrajya-b2b</string>
+</resources>

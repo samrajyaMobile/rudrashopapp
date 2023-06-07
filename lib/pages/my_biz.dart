@@ -1,7 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rudrashop/pages/orders_list.dart';
 import 'package:rudrashop/pages/profile.dart';
+import 'package:rudrashop/pages/support.dart';
+import 'package:rudrashop/utils/app_colors.dart';
 import 'package:rudrashop/utils/app_constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,16 +35,15 @@ class _MyBizState extends State<MyBiz> {
           children: [
             Container(
               decoration: const BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Color(0xffce1c36),
-                  Color(0xffFD5554),
-                  Color(0xffC22F37),
-                  Color(0xff7D0012),
-                  Color(0xffce1c36),
-                  Color(0xffFD5554),
-                  Color(0xffC22F37),
-                ])
-              ),
+                  gradient: LinearGradient(colors: [
+                Color(0xffce1c36),
+                Color(0xffFD5554),
+                Color(0xffC22F37),
+                Color(0xff7D0012),
+                Color(0xffce1c36),
+                Color(0xffFD5554),
+                Color(0xffC22F37),
+              ])),
               width: MediaQuery.of(context).size.width,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -73,7 +76,7 @@ class _MyBizState extends State<MyBiz> {
                           children: [
                             Text(
                               "${mybiz.firstName}",
-                              style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w700),
+                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                             ),
                             const Padding(
                               padding: EdgeInsets.symmetric(horizontal: 8),
@@ -85,13 +88,12 @@ class _MyBizState extends State<MyBiz> {
                             ),
                             Text(
                               "${mybiz.moNumber}",
-                              style: const TextStyle(color: Colors.white,fontWeight: FontWeight.w700),
+                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                             ),
                           ],
                         ),
                       ],
                     ),
-
                   ],
                 ),
               ),
@@ -148,30 +150,35 @@ class _MyBizState extends State<MyBiz> {
                         ),
                       ),
                       Expanded(
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.grey[200]),
-                              child: Padding(
-                                padding: const EdgeInsets.all(15),
-                                child: Icon(
-                                  Icons.support,
-                                  size: 30,
-                                  color: Colors.grey[700],
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const Support()));
+                          },
+                          child: Column(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(borderRadius: BorderRadius.circular(8), color: Colors.grey[200]),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15),
+                                  child: Icon(
+                                    Icons.support,
+                                    size: 30,
+                                    color: Colors.grey[700],
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Support",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: Colors.grey[700],
+                              const SizedBox(
+                                height: 10,
                               ),
-                            )
-                          ],
+                              Text(
+                                "Support",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.grey[700],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                       Expanded(
@@ -216,6 +223,7 @@ class _MyBizState extends State<MyBiz> {
                 ],
               ),
             ),
+
           ],
         );
       }),
